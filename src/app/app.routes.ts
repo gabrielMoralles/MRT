@@ -3,6 +3,7 @@ import { LoginComponent } from './login/login.component';
 import { OrdensComponent } from './ordens/ordens.component';
 import { ProdutosComponent } from './produtos/produtos.component';
 import { UserComponent } from './user/user.component';
+import { OrdemComponent } from './ordem/ordem.component';
 
 export const ROUTES: Routes=[
 
@@ -22,7 +23,10 @@ export const ROUTES: Routes=[
     {
         path:'users',
         component:UserComponent
+    },
+    {
+        path:'ordem/:id',
+        component:OrdemComponent
     }
-
 
 ]

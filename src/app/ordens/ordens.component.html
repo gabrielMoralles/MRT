@@ -7,30 +7,31 @@
         New Quote
       </button>
     </div> -->
-<table style="font-size: 14px;" class="table table-sm table-bordered">
-    <thead class="thead-dark">
-        <th>Cliente</th>
-        <th>Data Serviço</th>
-        <th>Data Pagamento</th>
-        <th>Valor</th>
-        <th>Descricao</th>
-        <th>Forma Pagamento</th>
-        <th>Status</th>
+    <table class="table table-sm table-bordered">
+        <thead>
+            <tr>
+                <th>Cliente</th>
+                <th>Data Serviço</th>
+                <th>Data Pagamento</th>
+                <th>Valor</th>
+                <th>Descricao</th>
+                <th>Forma Pagamento</th>
+                <th>Status</th>
+                <th>Link</th>
+            </tr>
+        </thead>
+        <tbody>
+                <tr *ngFor="let order of orders">
+                    <td>{{order.nome_Cliente}}</td>
+                    <td>{{order.dt_Servico | date}}</td>
+                    <td>{{order.dt_PagamentoOS | date}}</td>
+                    <td>{{order.valor_Servico}}</td>
+                    <td>{{order.descricao}}</td>
+                    <td>{{order.forma_PagamentoOS}}</td>
+                    <td>Status</td>
+                    <td><button [routerLink]="['/ordem',order.id_OrdemServico]" routerLinkActive="router-link-active"  class=" btn btn-sm btn-success">Go</button></td>
+                </tr>
+        </tbody>
+    </table>
 
-    </thead>
-
-    <tbody>
-        <tr *ngFor="let order of orders">
-            <td>{{order.nome_Cliente}}</td>
-            <td>{{order.dt_Servico | date}}</td>
-            <td>{{order.dt_PagamentoOS | date}}</td>
-            <td>{{order.valor_Servico}}</td>
-            <td>{{order.descricao}}</td>
-            <td>{{order.forma_PagamentoOS}}</td>
-            <td>Status</td>
-
-        </tr>
-
-    </tbody>
-</table>
 </div>

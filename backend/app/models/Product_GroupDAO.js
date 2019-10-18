@@ -40,6 +40,12 @@ login_GroupDAO.prototype.postLogin = function (id, callback) {
     insert into funcionario set ?
 	`, id, callback)
 }
+login_GroupDAO.prototype.getCargos = function (id, callback) {
+    this._connection.query(`
+    SELECT cargo_Funcionario from funcionario
+	`, id, callback)
+}
+
 
 
 

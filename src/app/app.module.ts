@@ -12,6 +12,7 @@ import { NavbarComponent } from './shared/navbar/navbar.component';
 import { ProdutosComponent } from './produtos/produtos.component';
 import { LoginModule } from './login/login.module';
 import { UserComponent } from './user/user.component';
+import { OrdemComponent } from './ordem/ordem.component';
 
 
 
@@ -21,7 +22,8 @@ import { UserComponent } from './user/user.component';
     OrdensComponent,
     NavbarComponent,
     ProdutosComponent,
-    UserComponent
+    UserComponent,
+    OrdemComponent
   ],
   imports: [
     BrowserModule,

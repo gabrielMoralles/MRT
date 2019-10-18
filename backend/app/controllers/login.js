@@ -57,14 +57,14 @@ module.exports.deleteProdutos = (application, req, res) => {
     });
 }
 
-module.exports.postLogin= (application, req, res) => {
+module.exports.getCargos= (application, req, res) => {
    
-    let login = req.body
+    // let login = req.body
 
     var connection = application.config.dbConnection;
     var login_groupDAO = new application.app.models.Product_GroupDAO(connection);
 
-    login_groupDAO.postLogin(login,(error, results) => {
+    login_groupDAO.getCargos((error, results) => {
         if (error) throw error
         return res.send(results)
     });

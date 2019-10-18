@@ -22,7 +22,9 @@
             <div class="form-row">
                 <div class="form-group col-md-4">
                     <label for="nome">Cargo:</label>
-                    <input class="form-control" formControlName="cargo_Funcionario" type="text">
+                    <select class="form-control" name="Cargo" id="Cargo">
+                        <option *ngFor="let cargo of cargos" value="">{{cargo.cargo_Funcionario}}</option>
+                    </select>
                 </div>
                 <div class="form-group col-md-4">
                     <label for="nome">Usuario:</label>
@@ -32,10 +34,9 @@
                     <label for="nome">Senha:</label>
                     <input class="form-control" formControlName="senha" type="password">
                 </div>
-                <input (click)="postLogin()" style="margin: 20px;" class="btn btn-success btn-sm btn-block btn-lg btn-block" type="submit">
+                <input [disabled]="formNew.invalid" (click)="postLogin()" style="margin: 20px;" class="btn btn-success btn-sm btn-block btn-lg btn-block" type="submit">
             </div>
         </div>
-
         <table class="table table-bordered" style="margin-top: 30px">
             <thead>
                 <tr>
@@ -59,7 +60,4 @@
             </tbody>
         </table>
     </form>
-
-
-
 </div>

@@ -26,5 +26,9 @@ export class OrdensService {
     let url = `http://localhost:9095/produtos/${id}`
     return this.http.delete<any>(url)
   }
+  getCargos(): Observable <any[]> {
+    let url = `http://localhost:9095/cargos`
+    return this.http.get<any[]>(url)
+  }
   
 }

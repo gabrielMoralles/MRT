@@ -5,3 +5,8 @@
     margin-bottom: 20px;
    
 }
+
+.hover :hover{
+
+    background-color: black;
+}
