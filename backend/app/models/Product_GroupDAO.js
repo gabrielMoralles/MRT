@@ -45,6 +45,12 @@ login_GroupDAO.prototype.getCargos = function (id, callback) {
     SELECT cargo_Funcionario from funcionario
 	`, id, callback)
 }
+login_GroupDAO.prototype.cadastroOrdens = function (id, callback) {
+    this._connection.query(`
+    INSERT INTO 
+	`, id, callback)
+}
+
 
 
 

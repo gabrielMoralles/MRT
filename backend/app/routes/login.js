@@ -22,5 +22,8 @@ module.exports = (application) => {
     application.get('/cargos', (req, res) => {
         application.app.controllers.login.getCargos(application, req, res);
     });
+    application.post('/cadastro-ordens', (req, res) => {
+        application.app.controllers.login.cadastroOrdens(application, req, res);
+    });
     
 }

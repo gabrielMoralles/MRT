@@ -1,11 +1,8 @@
-export interface Funcionario {
+// export interface Funcionario {
    
-    id_funcionario:string,
-    nome_Funcionario:string,
-    email_Funcionario:string,
-    telefone_Funcionario:string,
-    cargo_Funcionario:string,
-    usuario:string,
-    senha:string
-
-}
+//     cliente: [null, [Validators.required]],
+//     valor
+//     desc
+//     data_pag
+//     forma_pag:
+// }

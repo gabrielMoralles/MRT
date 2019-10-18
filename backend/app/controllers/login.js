@@ -69,3 +69,16 @@ module.exports.getCargos= (application, req, res) => {
         return res.send(results)
     });
 }
+
+module.exports.cadastroOrdens= (application, req, res) => {
+   
+    let body = req.body0
+    let ordem = body.ordem
+    var connection = application.config.dbConnection;
+    var login_groupDAO = new application.app.models.Product_GroupDAO(connection);
+
+    login_groupDAO.cadastroOrdens(ordem,(error, results) => {
+        if (error) throw error
+        return res.send(results)
+    });
+}

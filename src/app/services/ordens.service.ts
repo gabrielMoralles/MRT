@@ -30,5 +30,9 @@ export class OrdensService {
     let url = `http://localhost:9095/cargos`
     return this.http.get<any[]>(url)
   }
+  postOrdens(ordens): Observable <any[]> {
+    let url = `http://localhost:9095/cadastro-ordens`
+    return this.http.post<any[]>(url,ordens)
+  }
   
 }

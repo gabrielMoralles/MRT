@@ -13,6 +13,7 @@ import { ProdutosComponent } from './produtos/produtos.component';
 import { LoginModule } from './login/login.module';
 import { UserComponent } from './user/user.component';
 import { OrdemComponent } from './ordem/ordem.component';
+import { NovaOrdemComponent } from './nova-ordem/nova-ordem.component';
 
 
 
@@ -23,7 +24,8 @@ import { OrdemComponent } from './ordem/ordem.component';
     NavbarComponent,
     ProdutosComponent,
     UserComponent,
-    OrdemComponent
+    OrdemComponent,
+    NovaOrdemComponent
   ],
   imports: [
     BrowserModule,
