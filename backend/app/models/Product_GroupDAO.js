@@ -10,8 +10,7 @@ login_GroupDAO.prototype.login = function (callback) {
 }
 login_GroupDAO.prototype.ordens = function (callback) {
     this._connection.query(`
-    SELECT * FROM ordem_servico AS o 
-	INNER JOIN cliente AS c ON o.id_ClienteOS =c.id_Cliente
+    SELECT * FROM tabela_ordem
 	`, callback)
 }
 login_GroupDAO.prototype.postProduto = function (produto, callback) {
@@ -47,7 +46,12 @@ login_GroupDAO.prototype.getCargos = function (id, callback) {
 }
 login_GroupDAO.prototype.cadastroOrdens = function (id, callback) {
     this._connection.query(`
-    INSERT INTO 
+    INSERT INTO tabela_ordem set ?
+	`, id, callback)
+}
+login_GroupDAO.prototype.deleteOrdens = function (id, callback) {
+    this._connection.query(`
+    DELETE FROM tabela_ordem where id = ?
 	`, id, callback)
 }
 

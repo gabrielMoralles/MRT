@@ -72,12 +72,25 @@ module.exports.getCargos= (application, req, res) => {
 
 module.exports.cadastroOrdens= (application, req, res) => {
    
-    let body = req.body0
-    let ordem = body.ordem
+    let ordem = req.body
+    console.log(ordem)
     var connection = application.config.dbConnection;
     var login_groupDAO = new application.app.models.Product_GroupDAO(connection);
 
     login_groupDAO.cadastroOrdens(ordem,(error, results) => {
+        if (error) throw error
+        return res.send(results)
+    });
+}
+
+module.exports.deleteOrdens= (application, req, res) => {
+   
+    let ordem = req.params.id
+    var connection = application.config.dbConnection;
+    console.log(ordem)
+
+    var login_groupDAO = new application.app.models.Product_GroupDAO(connection);
+    login_groupDAO.deleteOrdens(ordem,(error, results) => {
         if (error) throw error
         return res.send(results)
     });

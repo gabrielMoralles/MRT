@@ -25,5 +25,8 @@ module.exports = (application) => {
     application.post('/cadastro-ordens', (req, res) => {
         application.app.controllers.login.cadastroOrdens(application, req, res);
     });
+    application.delete('/cadastro-ordens/:id', (req, res) => {
+        application.app.controllers.login.deleteOrdens(application, req, res);
+    });
     
 }

@@ -22,16 +22,17 @@
         </thead>
         <tbody>
                 <tr *ngFor="let order of orders">
-                    <td>{{order.nome_Cliente}}</td>
-                    <td>{{order.dt_Servico | date}}</td>
-                    <td>{{order.dt_PagamentoOS | date}}</td>
-                    <td>{{order.valor_Servico}}</td>
-                    <td>{{order.descricao}}</td>
-                    <td>{{order.forma_PagamentoOS}}</td>
+                    <td>{{order.cliente}}</td>
+                    <td>{{order.data}}</td>
+                    <td>{{order.data_pag| date}}</td>
+                    <td>{{order.valor}}</td>
+                    <td>{{order.desc}}</td>
+                    <td>{{order.form_pag}}</td>
                     <td>Status</td>
-                    <td><button [routerLink]="['/ordem',order.id_OrdemServico]" routerLinkActive="router-link-active"  class=" btn btn-sm btn-success">Go</button></td>
+                    <td><button [routerLink]="['/ordem',order.id]" routerLinkActive="router-link-active"  class=" btn btn-sm btn-success">Go</button></td>
                 </tr>
         </tbody>
     </table>
     <button class="btn btn-success" [routerLink]="['../nova-ordem']" routerLinkActive="router-link-active" >Nova ordem</button>
+    <button class="btn btn-warning" (click)="obterInventario()" >Obter Inventario</button>
 </div>

@@ -3,7 +3,7 @@
 <form action="" [formGroup]="formNew">
 
 
-    <h1 class="container"> Ordem de Serviço : {{IdOrdem}}</h1>
+    <h1 class="container">Nova Ordem</h1>
     <div class="container card">
         <div class="form-row">
             <div class="form-group col-md-4">
@@ -12,7 +12,7 @@
             </div>
             <div class="form-group col-md-4">
                 <label for="preco">Data Pagamento:</label>
-                <input class="form-control" formControlName="data_pag" type="text">
+                <input class="form-control" formControlName="data_pag" type="date">
             </div>
             <div class="form-group col-md-4">
                 <label for="preco">Valor :</label>
@@ -22,7 +22,7 @@
         <div class="form-row">
             <div class="form-group col-md-12">
                 <label for="preco">Forma de Pagamento:</label>
-                <select formControlName="forma_pag" class="form-control">
+                <select formControlName="form_pag" class="form-control">
                     <option  value="cartao">Cartao</option>
                     <option  value="dinheiro">Dinheiro</option>
                 </select>
@@ -34,7 +34,7 @@
             </div>
         </div>
         <div style="margin:10px;" class="form-row ">
-            <button class="btn btn-success col-md-12">OK</button>
+            <button [disabled]="formNew.invalid" (click)="register()" class="btn btn-success col-md-12">OK</button>
         </div>
     </div>
 

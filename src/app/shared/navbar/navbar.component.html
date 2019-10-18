@@ -1,7 +1,7 @@
 
 <nav class="navbar navbar-dark bg-dark">
     <p style="color:white;cursor: pointer;"  class="rounded float-left" [routerLink]="['/home']"  > IMG</p>
-    <p style="color: white;cursor: pointer" [routerLink]="['/produtos']" >Produto</p>
-    <p style="color: white;cursor: pointer" [routerLink]="['/users']">Usuarios</p>
+    <p *ngIf="permission == 'FULL'" style="color: white;cursor: pointer" [routerLink]="['/produtos']" >Produto</p>
+    <p *ngIf="permission == 'FULL'" style="color: white;cursor: pointer" [routerLink]="['/users']">Usuarios</p>
     <p style="color:white;cursor: pointer;">Bem vindo {{nome}}!</p>
   </nav>

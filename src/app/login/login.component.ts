@@ -49,6 +49,16 @@ export class LoginComponent implements OnInit {
 
             auth = true
             this.cookieService.set('nome',element.nome_Funcionario)
+            
+            if(element.cargo_Funcionario == "Administrador"){
+              this.cookieService.set('permission',"FULL")
+
+
+            }else{
+              this.cookieService.set('permission',"BASIC")
+
+
+            }
             this.router.navigate(['home'])
             
           }
