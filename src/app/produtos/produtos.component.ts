@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { OrdensService } from '../services/ordens.service';
 import { produto } from './models/produto_model'
+import { RouteGuardService } from '../shared/route-guard.service';
+import { Router, ActivatedRoute } from '@angular/router';
 
 // import { ReactiveFormsModule } from '@angular/forms';
 
@@ -15,16 +17,28 @@ export class ProdutosComponent implements OnInit {
   public formNew: FormGroup
   public produto: produto
   public produtos: produto[] = []
+  public route: string
   constructor(
 
     private formBuilder: FormBuilder,
-    private orderServices: OrdensService
+    private orderServices: OrdensService,
+    private routeGuard: RouteGuardService,
+    private router: Router,
+    private activatedRoute: ActivatedRoute
 
   ) { }
 
   ngOnInit() {
 
+    this.route = this.activatedRoute.snapshot.url[0].path
+    let perm = this.routeGuard.getGuard(this.route)
+    if (perm) {
+      this.router.navigate(['home'])
+    }
+    // if (this.routeGuard.getGuard(this.route).subscribe) {
 
+    //   
+    // }
     this.formNew = this.formBuilder.group({
 
       nome_Produto: [null, [Validators.required]],
@@ -66,17 +80,17 @@ export class ProdutosComponent implements OnInit {
   }
   deleteProduto(id: number, qtd: number) {
 
-    if (qtd > 0) { 
-    this.orderServices.deleteProduto(id).subscribe(
+    if (qtd > 0) {
+      this.orderServices.deleteProduto(id).subscribe(
 
-      (data) => { },
-      (err) => { console.log(err) },
-      () => {
+        (data) => { },
+        (err) => { console.log(err) },
+        () => {
 
-        this.getProdutos()
-      }
+          this.getProdutos()
+        }
 
-    )
+      )
     }
   }
 }

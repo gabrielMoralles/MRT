@@ -1,9 +1,10 @@
 <app-navbar></app-navbar>
+<h1 class="container">Cadastrar Produtos</h1>
 
-<div style="margin-top: 3%;" class="card container"  style="padding: 20px">
-    <div class="card-body">
+<div style="margin-top: 3%;" class="container card" style="padding: 20px">
+    <div class="card-body" style="padding: 10px;" >
         <form [formGroup]="formNew" (ngSubmit)="registrarProduto()">
-            <div class="card" style="padding: 30px">
+            <div class="card container" style="padding: 30px">
                 <div class="form-row">
                     <div class="form-group col-md-4">
                         <label for="NomeProd">Nome Produto</label>
@@ -35,41 +36,42 @@
                         <input class="form-control" formControlName="id_FornecedorProduto" type="number">
                     </div>
                 </div>
-            <input [disabled]="formNew.invalid" class="btn btn-success btn-sm btn-block" type="submit">
+                <input [disabled]="formNew.invalid" class="btn btn-success btn-sm btn-block" type="submit">
 
             </div>
 
         </form>
-    </div>
-
-    <table class="table table-sm table-bordered table-responsive ">
-        <thead>
-
-            <tr>
-                <th scope="col">Nome</th>
-                <th scope="col">Valor Custo</th>
-                <th scope="col">Valor Venda</th>
-                <th scope="col">Quantidade</th>
-                <th scope="col">Descricao</th>
-                <th scope="col">Fornecedor</th>
-                <th scope="col">Actions</th>
-            </tr>
-
-        </thead>
-
-        <tbody>
-
-            <tr *ngFor="let produto of produtos">
-
-                <td>{{produto.nome_Produto}}</td>
-                <td>{{produto.valor_Custo}}</td>
-                <td>{{produto.valor_Venda}}</td>
-                <td>{{produto.qtd_Produto}}</td>
-                <td>{{produto.descricao_Produto}}</td>
+        
+        <table class="table table-sm table-bordered table-responsive ">
+            <thead>
+                
+                <tr>
+                    <th scope="col">Nome</th>
+                    <th scope="col">Valor Custo</th>
+                    <th scope="col">Valor Venda</th>
+                    <th scope="col">Quantidade</th>
+                    <th scope="col">Descricao</th>
+                    <th scope="col">Fornecedor</th>
+                    <th scope="col">Actions</th>
+                </tr>
+                
+            </thead>
+            
+            <tbody>
+                
+                <tr *ngFor="let produto of produtos">
+                    
+                    <td>{{produto.nome_Produto}}</td>
+                    <td>{{produto.valor_Custo}}</td>
+                    <td>{{produto.valor_Venda}}</td>
+                    <td>{{produto.qtd_Produto}}</td>
+                    <td>{{produto.descricao_Produto}}</td>
                 <td>{{produto.id_FornecedorProduto}}</td>
-                <td><button type="button"(click)="deleteProduto(produto.id_Produto,produto.qtd_Produto)" class="btn btn-sm btn-danger">Del</button></td>
-            </tr>
+                <td><button type="button" (click)="deleteProduto(produto.id_Produto,produto.qtd_Produto)"
+                    class="btn btn-sm btn-danger">Del</button></td>
+                </tr>
         </tbody>
-
+        
     </table>
+</div>
 </div>

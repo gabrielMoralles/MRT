@@ -4,6 +4,8 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import {Funcionario} from './model/user_model'
 import { LoginService } from '../services/login.service';
 import { OrdensService } from '../services/ordens.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { RouteGuardService } from '../shared/route-guard.service';
 
 @Component({
   selector: 'app-user',
@@ -14,14 +16,25 @@ export class UserComponent implements OnInit {
   public formNew:FormGroup
   public logins:object[]=[]
   public cargos:any[]=[] 
+  public route: string
   constructor(
 
     private formBuilder:FormBuilder,
     private loginService:LoginService,
-    private orderService:OrdensService
+    private orderService:OrdensService,
+    private activatedRoute:ActivatedRoute,
+    private routeGuard: RouteGuardService,
+    private router: Router
   ) { }
 
   ngOnInit() {
+
+    this.route = this.activatedRoute.snapshot.url[0].path
+    let perm = this.routeGuard.getGuard(this.route)
+    if (perm) {
+      this.router.navigate(['home'])
+    }
+    
     this.getLogin()
     this.formNew = this.formBuilder.group({
       id_funcionario:[null],
