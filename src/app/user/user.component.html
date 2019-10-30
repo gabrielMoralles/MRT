@@ -3,7 +3,7 @@
 
 <div style="padding: 20px;" class="card container">
 
-    <form [formGroup]="formNew" action="POST">
+    <form [formGroup]="formNew" (ngSubmit)="postLogin()" action="POST">
 
         <div style="padding: 30px" class="container card">
             <div class="form-row">
@@ -23,8 +23,8 @@
             <div class="form-row">
                 <div class="form-group col-md-4">
                     <label for="nome">Cargo:</label>
-                    <select class="form-control" name="Cargo" id="Cargo">
-                        <option *ngFor="let cargo of cargos" value="">{{cargo.cargo_Funcionario}}</option>
+                    <select class="form-control" formControlName="cargo_Funcionario" name="Cargo" id="Cargo">
+                        <option *ngFor="let cargo of cargos"(change)='onChange($event)' value="cargo">{{cargo}}</option>
                     </select>
                 </div>
                 <div class="form-group col-md-4">
@@ -35,9 +35,10 @@
                     <label for="nome">Senha:</label>
                     <input class="form-control" formControlName="senha" type="password">
                 </div>
-                <input [disabled]="formNew.invalid" (click)="postLogin()" style="margin: 20px;" class="btn btn-success btn-sm btn-block btn-lg btn-block" type="submit">
+                <input type="button" [disabled]="formNew.invalid" style="margin: 20px;" class="btn btn-success btn-sm btn-block btn-lg btn-block" type="submit">
             </div>
         </div>
+    </form>
         <table class="table table-bordered" style="margin-top: 30px">
             <thead>
                 <tr>
@@ -60,5 +61,4 @@
                 </tr>
             </tbody>
         </table>
-    </form>
 </div>

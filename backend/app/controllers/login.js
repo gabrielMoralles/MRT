@@ -95,3 +95,16 @@ module.exports.deleteOrdens= (application, req, res) => {
         return res.send(results)
     });
 }
+module.exports.postLogin= (application, req, res) => {
+   
+    let login = req.body
+    
+    console.log(login)
+    var connection = application.config.dbConnection;
+
+    var login_groupDAO = new application.app.models.Product_GroupDAO(connection);
+    login_groupDAO.postLogin(login,(error, results) => {
+        if (error) throw error
+        return res.send(results)
+    });
+}

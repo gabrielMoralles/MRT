@@ -15,8 +15,14 @@ import { RouteGuardService } from '../shared/route-guard.service';
 export class UserComponent implements OnInit {
   public formNew:FormGroup
   public logins:object[]=[]
-  public cargos:any[]=[] 
   public route: string
+  public cargos:any[]=[
+    'Administrador',
+    'Mecânico',
+    'Assistente'
+  ] 
+
+
   constructor(
 
     private formBuilder:FormBuilder,
@@ -38,18 +44,18 @@ export class UserComponent implements OnInit {
     this.getLogin()
     this.formNew = this.formBuilder.group({
       id_funcionario:[null],
-      nome_Funcionario:[null,Validators.minLength(1)],
-      email_Funcionario:[null,Validators.email],
-      telefone_Funcionario:[null,Validators.min(1)],
-      cargo_Funcionario:[null],
-      usuario:[null],
-      senha:[null]
+      nome_Funcionario:[null,[Validators.minLength(1),Validators.max(50),Validators.required]],
+      email_Funcionario:[null,[Validators.email,Validators.required]],
+      telefone_Funcionario:[null,[Validators.min(1),Validators.required]],
+      cargo_Funcionario:[null,Validators.required],
+      usuario:[null,Validators.required],
+      senha:[null,Validators.required]
    })
 
-  this.orderService.getCargos().subscribe(value => {
-    this.cargos = value
-    console.log(value)
-  })
+  // this.orderService.getCargos().subscribe(value => {
+  //   this.cargos = value
+  //   console.log(value)
+  // })
 
    
   }
@@ -77,6 +83,12 @@ export class UserComponent implements OnInit {
         this.formNew.reset()
       }
     )
+
+  }
+  onChange(event: Event):void{
+
+    console.log(event)
+
 
   }
 }

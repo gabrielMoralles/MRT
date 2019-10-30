@@ -36,7 +36,7 @@ login_GroupDAO.prototype.deleteProdutos = function (id, callback) {
 login_GroupDAO.prototype.postLogin = function (id, callback) {
     console.log(id)
     this._connection.query(`
-    insert into funcionario set ?
+    insert into funcionario set ?;
 	`, id, callback)
 }
 login_GroupDAO.prototype.getCargos = function (id, callback) {
