@@ -17,9 +17,8 @@ export class UserComponent implements OnInit {
   public logins:object[]=[]
   public route: string
   public cargos:any[]=[
-    'Administrador',
-    'Mecânico',
-    'Assistente'
+    'Gerente',
+    'Usuario'
   ] 
 
 
