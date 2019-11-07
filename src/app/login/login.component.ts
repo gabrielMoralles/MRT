@@ -53,7 +53,7 @@ export class LoginComponent implements OnInit {
             auth = true
             this.cookieService.set('nome', element.nome_Funcionario)
 
-            if (element.cargo_Funcionario == "Administrador") {
+            if (element.cargo_Funcionario == "Gerente") {
               this.cookieService.set('permission', "FULL")
 
 

@@ -4,6 +4,7 @@ import { Order } from './models/order_model';
 import { produto } from '../produtos/models/produto_model';
 import { element } from 'protractor';
 import { CookieService } from 'ngx-cookie-service';
+import { NavbarComponent } from '../shared/navbar/navbar.component'
 
 @Component({
   selector: 'app-ordens',
@@ -13,18 +14,20 @@ import { CookieService } from 'ngx-cookie-service';
 export class OrdensComponent implements OnInit {
   public orders: Order[]
   public produtos: produto[] = []
-  public lst:string[]=[]
-  public permission:string
+  public lst: string[] = []
+  public permission: string
 
   constructor(
     private orderService: OrdensService,
-    private cookieService:CookieService
+    private cookieService: CookieService,
+    private navbar:NavbarComponent
 
   ) { }
 
   ngOnInit() {
-
+    
     this.permission = this.cookieService.get('permission')
+    this.navbar.setPermission(this.permission)
     this.orderService.getOrders().subscribe(
 
       (data) => { this.orders = data },
@@ -40,14 +43,14 @@ export class OrdensComponent implements OnInit {
 
     this.orderService.getProduto().subscribe(
       value => {
-        value.forEach(element =>{
-          if(element.qtd_Produto == 0){
+        value.forEach(element => {
+          if (element.qtd_Produto == 0) {
             this.lst.push(element.nome_Produto)
           }
         })
         alert(`Os itens: ${this.lst} estão em falta.`)
       }
-    
+
     )
   }
 }

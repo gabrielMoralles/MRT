@@ -34,7 +34,7 @@ import { NovaOrdemComponent } from './nova-ordem/nova-ordem.component';
     LoginModule,
     RouterModule.forRoot(ROUTES)
   ],
-  providers: [CookieService],
+  providers: [CookieService,NavbarComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

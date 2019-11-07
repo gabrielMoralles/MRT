@@ -22,7 +22,11 @@ export class NavbarComponent implements OnInit {
     this.nome = this.CookieService.get('nome')
 
     this.tab = this.activatedRoute.snapshot.url[0].path
-    console.log(this.tab)
+    
   }
 
+  setPermission(value){
+
+    this.permission = value
+  }
 }
