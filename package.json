@@ -11,7 +11,7 @@
   },
   "private": true,
   "dependencies": {
-    "@angular/animations": "~8.2.0",
+    "@angular/animations": "^8.2.13",
     "@angular/common": "~8.2.0",
     "@angular/compiler": "~8.2.0",
     "@angular/core": "~8.2.0",
@@ -24,6 +24,7 @@
     "cors": "^2.8.5",
     "mysql": "^2.17.1",
     "ngx-cookie-service": "^2.2.0",
+    "ngx-toastr": "^11.2.1",
     "nodemon": "^1.19.2",
     "rxjs": "~6.4.0",
     "tslib": "^1.10.0",

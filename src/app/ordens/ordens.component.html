@@ -1,44 +1,36 @@
 <app-navbar></app-navbar>
 <div class="container">
-    <h1>Ordem de Serviço</h1>
+    <H1>Ordem De servico</H1>
     <!-- <div *ngIf="permission != 'BASIC' " class=" float-left buttonAdd col-md-4 d-flex justify-content-end">
       <button type="button" class="btn btn-danger" routerLink="/new-quotes">
         <i class="fas fa-plus"></i>
         New Quote
       </button>
     </div> -->
-    <table class="table table-sm table-bordered">
-        <thead>
-            <tr>
-                <th>Cliente</th>
-                <th>Data Serviço</th>
-                <th>Data Pagamento</th>
-                <th>Valor</th>
-                <th>Descricao</th>
-                <th>Forma Pagamento</th>
-                <th>Status</th>
-                <th>Link</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let order of orders">
-                <td>{{order.cliente}}</td>
-                <td>{{order.data}}</td>
-                <td>{{order.data_pag| date}}</td>
-                <td>{{order.valor}}</td>
-                <td>{{order.desc}}</td>
-                <td>{{order.form_pag}}</td>
-                <td>Status</td>
-                <td><button [routerLink]="['/ordem',order.id]" routerLinkActive="router-link-active"
-                        class=" btn btn-sm btn-success">Go</button></td>
-            </tr>
-        </tbody>
-    </table>
-    <div class="float-left">
-        <div class="btn-group">
-            <button class="btn btn-success " [routerLink]="['../nova-ordem']" routerLinkActive="router-link-active">Nova
-                ordem</button>
-            <button class="btn btn-warning" (click)="obterInventario()">Obter Inventario</button>
-        </div>
-    </div>
+<table style="font-size: 14px;" class="table table-sm table-bordered">
+    <thead class="thead-dark">
+        <th>Cliente</th>
+        <th>Data Serviço</th>
+        <th>Data Pagamento</th>
+        <th>Valor</th>
+        <th>Descricao</th>
+        <th>Forma Pagamento</th>
+        <th>Status</th>
+
+    </thead>
+
+    <tbody>
+        <tr *ngFor="let order of orders">
+            <td>{{order.nome_Cliente}}</td>
+            <td>{{order.dt_Servico | date}}</td>
+            <td>{{order.dt_PagamentoOS | date}}</td>
+            <td>{{order.valor_Servico}}</td>
+            <td>{{order.descricao}}</td>
+            <td>{{order.forma_PagamentoOS}}</td>
+            <td>Status</td>
+
+        </tr>
+
+    </tbody>
+</table>
 </div>

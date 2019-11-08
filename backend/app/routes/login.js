@@ -19,14 +19,4 @@ module.exports = (application) => {
     application.post('/login', (req, res) => {
         application.app.controllers.login.postLogin(application, req, res);
     });
-    application.get('/cargos', (req, res) => {
-        application.app.controllers.login.getCargos(application, req, res);
-    });
-    application.post('/cadastro-ordens', (req, res) => {
-        application.app.controllers.login.cadastroOrdens(application, req, res);
-    });
-    application.delete('/cadastro-ordens/:id', (req, res) => {
-        application.app.controllers.login.deleteOrdens(application, req, res);
-    });
-    
 }

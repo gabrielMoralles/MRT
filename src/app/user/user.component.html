@@ -1,11 +1,10 @@
 <app-navbar></app-navbar>
-<h1 class="container">Cadastrar Usuários</h1>
 
-<div style="padding: 20px;" class="card container">
+<div style="margin-top:3%;padding:30px;" class="card container">
 
-    <form [formGroup]="formNew" (ngSubmit)="postLogin()" action="POST">
+    <form [formGroup]="formNew" action="POST">
 
-        <div style="padding: 30px" class="container card">
+        <div style="padding: 20px" class="container card">
             <div class="form-row">
                 <div class="form-group col-md-4">
                     <label for="nome">Nome:</label>
@@ -23,22 +22,20 @@
             <div class="form-row">
                 <div class="form-group col-md-4">
                     <label for="nome">Cargo:</label>
-                    <select class="form-control" formControlName="cargo_Funcionario" name="Cargo" id="Cargo">
-                        <option *ngFor="let cargo of cargos"(change)='onChange($event)' [value]="cargo">{{cargo}}</option>
-                    </select>
+                    <input class="form-control" formControlName="cargo_Funcionario" type="text">
                 </div>
                 <div class="form-group col-md-4">
                     <label for="nome">Usuario:</label>
-                    <input class="form-control"  autocomplete="off" formControlName="usuario" type="text">
+                    <input class="form-control" formControlName="usuario" type="text">
                 </div>
                 <div class="form-group col-md-4">
                     <label for="nome">Senha:</label>
-                    <input class="form-control"  autocomplete="off" formControlName="senha" type="password">
+                    <input class="form-control" formControlName="senha" type="password">
                 </div>
-                <input type="button" [disabled]="formNew.invalid" style="margin: 20px;" class="btn btn-success btn-sm btn-block btn-lg btn-block" type="submit">
+                <input (click)="postLogin()" style="margin: 20px;" class="btn btn-success btn-sm btn-block btn-lg btn-block" type="submit">
             </div>
         </div>
-    </form>
+
         <table class="table table-bordered" style="margin-top: 30px">
             <thead>
                 <tr>
@@ -61,4 +58,8 @@
                 </tr>
             </tbody>
         </table>
+    </form>
+
+
+
 </div>

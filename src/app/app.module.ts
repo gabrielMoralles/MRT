@@ -12,8 +12,8 @@ import { NavbarComponent } from './shared/navbar/navbar.component';
 import { ProdutosComponent } from './produtos/produtos.component';
 import { LoginModule } from './login/login.module';
 import { UserComponent } from './user/user.component';
-import { OrdemComponent } from './ordem/ordem.component';
-import { NovaOrdemComponent } from './nova-ordem/nova-ordem.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 
 
 
@@ -23,18 +23,18 @@ import { NovaOrdemComponent } from './nova-ordem/nova-ordem.component';
     OrdensComponent,
     NavbarComponent,
     ProdutosComponent,
-    UserComponent,
-    OrdemComponent,
-    NovaOrdemComponent
+    UserComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
+    BrowserAnimationsModule,
     ReactiveFormsModule,
     LoginModule,
-    RouterModule.forRoot(ROUTES)
+    RouterModule.forRoot(ROUTES),
+    ToastrModule.forRoot()
   ],
-  providers: [CookieService,NavbarComponent],
+  providers: [CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

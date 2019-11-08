@@ -26,17 +26,5 @@ export class OrdensService {
     let url = `http://localhost:9095/produtos/${id}`
     return this.http.delete<any>(url)
   }
-  getCargos(): Observable <any[]> {
-    let url = `http://localhost:9095/cargos`
-    return this.http.get<any[]>(url)
-  }
-  postOrdens(ordens): Observable <any[]> {
-    let url = `http://localhost:9095/cadastro-ordens`
-    return this.http.post<any[]>(url,ordens)
-  }
-  deleteOrdem(ordem): Observable <any[]> {
-    let url = `http://localhost:9095/cadastro-ordens/${ordem}`
-    return this.http.delete<any[]>(url)
-  }
   
 }

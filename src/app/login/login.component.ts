@@ -6,8 +6,7 @@ import { element } from 'protractor';
 import { createUrlResolverWithoutPackagePrefix } from '@angular/compiler';
 import { Usuario } from './model/user_model';
 import { CookieService } from 'ngx-cookie-service';
-import { Router, ActivatedRoute } from '@angular/router';
-import { RouteGuardService } from '../shared/route-guard.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -16,61 +15,49 @@ import { RouteGuardService } from '../shared/route-guard.service';
 })
 export class LoginComponent implements OnInit {
   public loginForm: any
-  public users: Usuario[] = []
-  public route: string
+  public users : Usuario[] =[]
   constructor(
-    private formBuilder: FormBuilder,
-    private loginService: LoginService,
-    private cookieService: CookieService,
-    private router: Router,
-    private activatedRoute: ActivatedRoute,
-    private routeGuard: RouteGuardService
+    private formBuilder:FormBuilder,
+    private loginService:LoginService,
+    private cookieService:CookieService,
+    private router:Router
+    
   ) { }
 
   ngOnInit() {
 
     this.loginForm = this.formBuilder.group({
 
-      username: [null, Validators.required],
-      password: [null, Validators.required]
+      username:[null,Validators.required],
+      password:[null,Validators.required]
 
     })
 
-
+    
   }
-  login() {
+  login(){
 
     this.loginService.getLogin().subscribe(
 
-      (data) => { this.users = data },
-      (err) => { },
-      () => {
+      (data)=>{this.users = data},
+      (err) =>{},
+      ()=>{
         let auth = false
-        this.users.forEach(element => {
+        this.users.forEach( element =>{ 
           console.log(element)
-          if (this.loginForm.get('username').value === element.usuario && this.loginForm.get('password').value === element.senha) {
+          if (this.loginForm.get('username').value === element.usuario && this.loginForm.get('password').value === element.senha ){
 
             auth = true
-            this.cookieService.set('nome', element.nome_Funcionario)
-
-            if (element.cargo_Funcionario == "Gerente") {
-              this.cookieService.set('permission', "FULL")
-
-
-            } else {
-              this.cookieService.set('permission', "BASIC")
-
-
-            }
+            this.cookieService.set('nome',element.nome_Funcionario)
             this.router.navigate(['home'])
-
+            
           }
 
         })
         console.log(auth)
       }
     )
-
+    
 
   }
 
