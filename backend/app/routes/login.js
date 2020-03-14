@@ -13,10 +13,23 @@ module.exports = (application) => {
     application.delete('/produtos/:id', (req, res) => {
         application.app.controllers.login.deleteProdutos(application, req, res);
     });
+    application.delete('/produtos/add/:id', (req, res) => {
+        application.app.controllers.login.addProdutos(application, req, res);
+    });
     application.get('/produtos', (req, res) => {
         application.app.controllers.login.getProdutos(application, req, res);
     });
     application.post('/login', (req, res) => {
         application.app.controllers.login.postLogin(application, req, res);
     });
+    application.get('/cargos', (req, res) => {
+        application.app.controllers.login.getCargos(application, req, res);
+    });
+    application.post('/cadastro-ordens', (req, res) => {
+        application.app.controllers.login.cadastroOrdens(application, req, res);
+    });
+    application.delete('/cadastro-ordens/:id', (req, res) => {
+        application.app.controllers.login.deleteOrdens(application, req, res);
+    });
+
 }

@@ -1,75 +1,80 @@
 <app-navbar></app-navbar>
+<h1 class="container">Cadastrar Produtos</h1>
 
-<div style="margin-top: 3%;" class="card container"  style="padding: 20px">
-    <div class="card-body">
-        <form [formGroup]="formNew" (ngSubmit)="registrarProduto()">
-            <div class="card" style="padding: 30px">
-                <div class="form-row">
-                    <div class="form-group col-md-4">
-                        <label for="NomeProd">Nome Produto</label>
-                        <input class="form-control" formControlName="nome_Produto" type="text">
-                    </div>
-                    <div class="form-group col-md-4">
-                        <label for="NomeProd">Valor Custo</label>
-                        <input class="form-control" formControlName="valor_Custo" type="number">
-                    </div>
-                    <div class="form-group col-md-4">
-                        <label for="NomeProd">Valor Venda</label>
-                        <input class="form-control" formControlName="valor_Venda" type="number">
-                    </div>
-                </div>
-                <div class="form-row">
-                    <div class="form-group col-md-4">
+<div style="margin-top: 3%;" class="container card" style="padding: 20px">
+  <div class="card-body" style="padding: 10px;">
+    <form [formGroup]="formNew" (ngSubmit)="registrarProduto()">
+      <div class="card container" style="padding: 30px">
+        <div class="form-row">
 
-                        <label for="NomeProd">Quantidade</label>
-                        <input class="form-control" formControlName="qtd_Produto" type="number">
-                    </div>
-                    <div class="form-group col-md-4">
+          <mat-form-field class="col-sm-4" appearance="outline">
+            <mat-label for="NomeProd">Nome Produto</mat-label>
+            <input matInput formControlName="nome_Produto" type="text" />
+          </mat-form-field>
+          <mat-form-field class="col-sm-4" appearance="outline">
+            <mat-label for="NomeProd">Valor Custo</mat-label>
+            <input matInput formControlName="valor_Custo" type="text" />
+          </mat-form-field>
+          <mat-form-field class="col-sm-4" appearance="outline">
+            <mat-label for="NomeProd">Valor Venda</mat-label>
+            <input matInput formControlName="valor_Venda" type="text" />
+          </mat-form-field>
+        </div>
+        <div class="form-row">
+          <mat-form-field class="col-sm-4" appearance="outline">
+            <mat-label for="NomeProd">Quantidade</mat-label>
+            <input matInput formControlName="qtd_Produto" type="text" />
+          </mat-form-field>
+          <mat-form-field class="col-sm-4" appearance="outline">
+            <mat-label for="NomeProd">Descrição</mat-label>
+            <input matInput formControlName="descricao_Produto" type="text" />
+          </mat-form-field>
+          <mat-form-field class="col-sm-4" appearance="outline">
+            <mat-label for="NomeProd">Fornecedor</mat-label>
+            <input matInput formControlName="id_FornecedorProduto" type="text" />
+          </mat-form-field>
 
-                        <label for="NomeProd">Descrição</label>
-                        <input class="form-control" formControlName="descricao_Produto" type="text">
-                    </div>
-                    <div class="form-group col-md-4">
 
-                        <label for="NomeProd">Fornecedor</label>
-                        <input class="form-control" formControlName="id_FornecedorProduto" type="number">
-                    </div>
-                </div>
-            <input [disabled]="formNew.errors" class="btn btn-success btn-sm btn-block" type="submit">
+        </div>
+        <input [disabled]="formNew.invalid" class="btn btn-success btn-sm btn-block" type="submit" />
+      </div>
+    </form>
 
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th scope="col">Nome</th>
+          <th scope="col">Valor Custo</th>
+          <th scope="col">Valor Venda</th>
+          <th scope="col">Quantidade</th>
+          <th scope="col">Descricao</th>
+          <th scope="col">Fornecedor</th>
+          <th scope="col">Actions</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let produto of produtos">
+          <td>{{ produto.nome_Produto }}</td>
+          <td>{{ produto.valor_Custo }}</td>
+          <td>{{ produto.valor_Venda }}</td>
+          <td>{{ produto.qtd_Produto }}</td>
+          <td>{{ produto.descricao_Produto }}</td>
+          <td>{{ produto.id_FornecedorProduto }}</td>
+          <td>
+            <div class="flex">
+              <div>
+                <button class=" btn btn-danger" (click)="deleteProduto(produto.id,produto.qtd_Produto)">
+                  < </button>
+              </div>
+              <div>
+                <button class="btn btn-danger" (click)="addProduto(produto.id,produto.qtd_Produto)"> > </button>
+              </div>
             </div>
 
-        </form>
-    </div>
-
-    <table class="table table-sm table-bordered table-responsive ">
-        <thead>
-
-            <tr>
-                <th scope="col">Nome</th>
-                <th scope="col">Valor Custo</th>
-                <th scope="col">Valor Venda</th>
-                <th scope="col">Quantidade</th>
-                <th scope="col">Descricao</th>
-                <th scope="col">Fornecedor</th>
-                <th scope="col">Actions</th>
-            </tr>
-
-        </thead>
-
-        <tbody>
-
-            <tr *ngFor="let produto of produtos">
-
-                <td>{{produto.nome_Produto}}</td>
-                <td>{{produto.valor_Custo}}</td>
-                <td>{{produto.valor_Venda}}</td>
-                <td>{{produto.qtd_Produto}}</td>
-                <td>{{produto.descricao_Produto}}</td>
-                <td>{{produto.id_FornecedorProduto}}</td>
-                <td><button type="button"(click)="deleteProduto(produto.id_Produto,produto.qtd_Produto)" class="btn btn-sm btn-danger">Del</button></td>
-            </tr>
-        </tbody>
-
+          </td>
+        </tr>
+      </tbody>
     </table>
+  </div>
 </div>

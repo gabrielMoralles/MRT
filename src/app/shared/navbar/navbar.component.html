@@ -1,7 +1,25 @@
+<!-- <nav class="navbar navbar-dark bg-dark nav justify-content-center">
+  <p class="nav-item" style="color:white;cursor: pointer;" class="rounded float-left" [routerLink]="['/home']"> IMG</p>
+  <p class="nav-item" *ngIf="permission == 'FULL'" style="color: white;cursor: pointer" [routerLink]="['/produtos']">
+    Produto</p>
+  <p class="nav-item" *ngIf="permission == 'FULL'" style="color: white;cursor: pointer" [routerLink]="['/users']">
+    Usuarios</p>
+  <p class="nav-item" style="color:white;cursor: pointer;">Bem vindo {{nome}}!</p>
+</nav> -->
 
-<nav class="navbar navbar-dark bg-dark">
-    <p style="color:white;"  [routerLink]="['/home']"  >MRT</p>
-    <p style="color: white" [routerLink]="['/produtos']" >Produto</p>
-    <p style="color: white" [routerLink]="['/users']">Usuarios</p>
-    <p style="color:white;">Bem vindo {{nome}}!</p>
-  </nav>
+<nav class="navbar navbar-dark bg-dark text-white ">
+  <ul class="nav nav-pills">
+    <li class="nav-item">
+      <a [ngClass]="{'active' : tab == 'home'}" class="nav-link" [routerLink]="['/home']">Home</a>
+    </li>
+    <li *ngIf="permission == 'FULL'" class="nav-item">
+      <a [ngClass]="{'active' : tab == 'produtos'}" class="nav-link" [routerLink]="['/produtos']">Produtos</a>
+    </li>
+    <li *ngIf="permission == 'FULL'" class="nav-item">
+      <a [ngClass]="{'active' : tab == 'users'}" class="nav-link" [routerLink]="['/users']">Usuários</a>
+    </li>
+  </ul>
+  <div class="nav-item" class="rounded float-left" [routerLink]="['/home']">
+    <a class="nav-link">IMG</a>
+  </div>
+</nav>

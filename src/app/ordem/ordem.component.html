@@ -1,0 +1,53 @@
+<app-navbar></app-navbar>
+
+
+<form action="" [formGroup]="formNew">
+
+
+    <h1 class="container"> Ordem de Serviço : {{IdOrdem}}</h1>
+    <div class="container card">
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <label for="preco">Preço:</label>
+                <input placeholder="Insira o Preço total da ordem." class="form-control" formControlName="preco"
+                    type="text">
+            </div>
+            <div class="form-group col-md-4">
+                <label for="preco">Cliente:</label>
+                <input placeholder="Insira o nome do cliente da ordem." class="form-control" formControlName="cliente"
+                    type="text">
+            </div>
+            <div class="form-group col-md-4">
+                <label for="preco">Forma de Pagamento:</label>
+                <select formControlName="formaPag" class="formaPag" class="form-control" name="" id="" placeholder="Escolha a forma de pagamento.">
+                    <option value="cartão">Cartão</option>
+                    <option value="dinheiro">Dinheiro</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-12">
+                <label for="preco">Forma de Pagamento:</label>
+                <select formControlName="formaPag"  class="form-control">
+                    <option value="">Produto 1</option>
+                    <option value="">Produto 2</option>
+                    <option value="">Produto 3</option>
+                    <option value="">Produto 4</option>
+                    <option value="">Produto 5</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="exampleFormControlTextarea1">Descrição :</label>
+            <textarea formControlName="desc" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+        </div>
+        <div class="form-row">
+            <button class="btn btn-success col-md-12">OK</button>
+        </div>
+        <div class="form-row">
+            <button (click)="removerOrdem()" class="btn btn-danger col-md-12">Deletar Ordem</button>
+        </div>
+    </div>
+
+
+</form>

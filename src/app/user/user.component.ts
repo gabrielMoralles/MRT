@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 import {Funcionario} from './model/user_model'
 import { LoginService } from '../services/login.service';
+import { OrdensService } from '../services/ordens.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { RouteGuardService } from '../shared/route-guard.service';
 
 @Component({
   selector: 'app-user',
@@ -12,23 +15,48 @@ import { LoginService } from '../services/login.service';
 export class UserComponent implements OnInit {
   public formNew:FormGroup
   public logins:object[]=[]
+  public route: string
+  public cargos:any[]=[
+    'Gerente',
+    'Usuario'
+  ] 
+
+
   constructor(
 
     private formBuilder:FormBuilder,
-    private loginService:LoginService
+    private loginService:LoginService,
+    private orderService:OrdensService,
+    private activatedRoute:ActivatedRoute,
+    private routeGuard: RouteGuardService,
+    private router: Router
   ) { }
 
   ngOnInit() {
+
+    this.route = this.activatedRoute.snapshot.url[0].path
+    let perm = this.routeGuard.getGuard(this.route)
+    if (perm) {
+      this.router.navigate(['home'])
+    }
+    
     this.getLogin()
     this.formNew = this.formBuilder.group({
       id_funcionario:[null],
-      nome_Funcionario:[null],
-      email_Funcionario:[null],
-      telefone_Funcionario:[null],
-      cargo_Funcionario:[null],
-      usuario:[null],
-      senha:[null]
+      nome_Funcionario:[null,[Validators.minLength(1),Validators.max(50),Validators.required]],
+      email_Funcionario:[null,[Validators.email,Validators.required]],
+      telefone_Funcionario:[null,[Validators.min(1),Validators.required]],
+      cargo_Funcionario:[null,Validators.required],
+      usuario:[null,Validators.required],
+      senha:[null,Validators.required]
    })
+
+  // this.orderService.getCargos().subscribe(value => {
+  //   this.cargos = value
+  //   console.log(value)
+  // })
+
+   
   }
   
   getLogin(){
@@ -54,6 +82,12 @@ export class UserComponent implements OnInit {
         this.formNew.reset()
       }
     )
+
+  }
+  onChange(event: Event):void{
+
+    console.log(event)
+
 
   }
 }
