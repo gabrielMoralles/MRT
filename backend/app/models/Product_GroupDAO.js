@@ -2,7 +2,7 @@ function login_GroupDAO(connection) {
   this._connection = connection;
 }
 
-login_GroupDAO.prototype.login = function(callback) {
+login_GroupDAO.prototype.login = function (callback) {
   this._connection.query(
     `
         SELECT * from funcionario;
@@ -10,7 +10,7 @@ login_GroupDAO.prototype.login = function(callback) {
     callback
   );
 };
-login_GroupDAO.prototype.ordens = function(callback) {
+login_GroupDAO.prototype.ordens = function (callback) {
   this._connection.query(
     `
     SELECT * FROM tabela_ordem
@@ -18,7 +18,7 @@ login_GroupDAO.prototype.ordens = function(callback) {
     callback
   );
 };
-login_GroupDAO.prototype.postProduto = function(produto, callback) {
+login_GroupDAO.prototype.postProduto = function (produto, callback) {
   this._connection.query(
     ` 
     INSERT INTO estoque set ?
@@ -27,7 +27,7 @@ login_GroupDAO.prototype.postProduto = function(produto, callback) {
     callback
   );
 };
-login_GroupDAO.prototype.getProduto = function(callback) {
+login_GroupDAO.prototype.getProduto = function (callback) {
   this._connection.query(
     `
     SELECT * FROM estoque ORDER BY id DESC
@@ -35,7 +35,7 @@ login_GroupDAO.prototype.getProduto = function(callback) {
     callback
   );
 };
-login_GroupDAO.prototype.deleteProdutos = function(id, callback) {
+login_GroupDAO.prototype.deleteProdutos = function (id, callback) {
   console.log(id);
   this._connection.query(
     `
@@ -49,7 +49,21 @@ login_GroupDAO.prototype.deleteProdutos = function(id, callback) {
     callback
   );
 };
-login_GroupDAO.prototype.postLogin = function(id, callback) {
+login_GroupDAO.prototype.addProdutos = function (id, callback) {
+  console.log('add');
+  this._connection.query(
+    `
+    
+    SELECT @num := (SELECT e.qtd_Produto FROM estoque AS e WHERE e.id = ?);
+
+    UPDATE estoque AS e SET e.qtd_Produto = @num+1 
+	WHERE e.id = ?;
+	`,
+    [id, id],
+    callback
+  );
+};
+login_GroupDAO.prototype.postLogin = function (id, callback) {
   console.log(id);
   this._connection.query(
     `
@@ -59,7 +73,7 @@ login_GroupDAO.prototype.postLogin = function(id, callback) {
     callback
   );
 };
-login_GroupDAO.prototype.getCargos = function(id, callback) {
+login_GroupDAO.prototype.getCargos = function (id, callback) {
   this._connection.query(
     `
     SELECT cargo_Funcionario from funcionario
@@ -68,7 +82,7 @@ login_GroupDAO.prototype.getCargos = function(id, callback) {
     callback
   );
 };
-login_GroupDAO.prototype.cadastroOrdens = function(id, callback) {
+login_GroupDAO.prototype.cadastroOrdens = function (id, callback) {
   this._connection.query(
     `
     INSERT INTO tabela_ordem set ?
@@ -77,7 +91,7 @@ login_GroupDAO.prototype.cadastroOrdens = function(id, callback) {
     callback
   );
 };
-login_GroupDAO.prototype.deleteOrdens = function(id, callback) {
+login_GroupDAO.prototype.deleteOrdens = function (id, callback) {
   this._connection.query(
     `
     DELETE FROM tabela_ordem where id = ?

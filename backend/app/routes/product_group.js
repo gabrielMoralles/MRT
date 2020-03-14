@@ -14,6 +14,7 @@ module.exports = (application) => {
     application.delete('/delete-group/:id/:groupNumber', (req, res) => {
         application.app.controllers.product_group.deleteProductGroup(application, req, res);
     });
+
     application.patch('/delete-group/:id/:groupNumber', (req, res) => {
         application.app.controllers.product_group.removeProductGroup(application, req, res);
     });

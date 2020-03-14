@@ -8,6 +8,8 @@ import { Usuario } from './model/user_model';
 import { CookieService } from 'ngx-cookie-service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { RouteGuardService } from '../shared/route-guard.service';
+import { MatDialog } from '@angular/material';
+import { LoginDialogComponent } from './dialogs/login-dialog/login-dialog.component';
 
 @Component({
   selector: 'app-login',
@@ -24,7 +26,8 @@ export class LoginComponent implements OnInit {
     private cookieService: CookieService,
     private router: Router,
     private activatedRoute: ActivatedRoute,
-    private routeGuard: RouteGuardService
+    private routeGuard: RouteGuardService,
+    private dialogService: MatDialog
   ) { }
 
   ngOnInit() {
@@ -64,10 +67,15 @@ export class LoginComponent implements OnInit {
             }
             this.router.navigate(['home'])
 
+          } else {
+            // alert('Usuário ou senha inválidos')
+            this.dialogService.open(LoginDialogComponent, {
+              width: '350px'
+            })
           }
 
         })
-        console.log(auth)
+        // console.log(auth)
       }
     )
 

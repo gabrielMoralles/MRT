@@ -23,7 +23,7 @@ export class ProdutosComponent implements OnInit {
     private routeGuard: RouteGuardService,
     private router: Router,
     private activatedRoute: ActivatedRoute
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.route = this.activatedRoute.snapshot.url[0].path;
@@ -69,14 +69,14 @@ export class ProdutosComponent implements OnInit {
       err => {
         console.log(err);
       },
-      () => {}
+      () => { }
     );
   }
   deleteProduto(id: number, qtd: number) {
     console.log(id);
     if (qtd > 0) {
       this.orderServices.deleteProduto(id).subscribe(
-        data => {},
+        data => { },
         err => {
           console.log(err);
         },
@@ -85,5 +85,17 @@ export class ProdutosComponent implements OnInit {
         }
       );
     }
+  }
+  addProduto(id: number, qtd: number) {
+    console.log(id);
+    this.orderServices.addProduto(id).subscribe(
+      data => { },
+      err => {
+        console.log(err);
+      },
+      () => {
+        this.getProdutos();
+      }
+    );
   }
 }

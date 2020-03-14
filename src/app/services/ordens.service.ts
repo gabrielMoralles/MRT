@@ -9,34 +9,38 @@ import { produto } from '../produtos/models/produto_model';
 })
 export class OrdensService {
 
-  constructor( private http: HttpClient ) { }
+  constructor(private http: HttpClient) { }
   private productNameURL = 'http://localhost:9095/ordens'
-  getOrders(): Observable <Order[]> {
+  getOrders(): Observable<Order[]> {
     return this.http.get<any[]>(this.productNameURL)
   }
-  getProduto(): Observable <produto[]> {
+  getProduto(): Observable<produto[]> {
     let url = 'http://localhost:9095/produtos'
     return this.http.get<produto[]>(url)
   }
   postProduto(form: produto) {
     let url = 'http://localhost:9095/produtos'
-    return this.http.post<produto>(url,form)
+    return this.http.post<produto>(url, form)
   }
-  deleteProduto(id:number) {
+  deleteProduto(id: number) {
     let url = `http://localhost:9095/produtos/${id}`
     return this.http.delete<any>(url)
   }
-  getCargos(): Observable <any[]> {
+  addProduto(id: number) {
+    let url = `http://localhost:9095/produtos/add/${id}`
+    return this.http.delete<any>(url)
+  }
+  getCargos(): Observable<any[]> {
     let url = `http://localhost:9095/cargos`
     return this.http.get<any[]>(url)
   }
-  postOrdens(ordens): Observable <any[]> {
+  postOrdens(ordens): Observable<any[]> {
     let url = `http://localhost:9095/cadastro-ordens`
-    return this.http.post<any[]>(url,ordens)
+    return this.http.post<any[]>(url, ordens)
   }
-  deleteOrdem(ordem): Observable <any[]> {
+  deleteOrdem(ordem): Observable<any[]> {
     let url = `http://localhost:9095/cadastro-ordens/${ordem}`
     return this.http.delete<any[]>(url)
   }
-  
+
 }

@@ -2,42 +2,31 @@
   <div class="container card">
     <!-- <p>Login</p> -->
     <form (ngSubmit)="login()" [formGroup]="loginForm">
-      <div class="form-group card-body ">
-        <div class="form-group ">
-          <!-- <label for="user"> Username :</label>
-          <input
-            formControlName="username"
-            class="form-control"
-            id="user"
-            type="text"
-          /> -->
-          <div class="col-sm-12 header">
-            Login
-          </div>
-          <mat-form-field class="col-sm-12" appearance="outline">
-            <mat-label>Username</mat-label>
-            <input matInput formControlName="username">
-          </mat-form-field>
+      <div class="col-sm-12 header Roboto bold">
+        Login
+      </div>
+      <mat-form-field class="col-sm-12" appearance="outline">
+        <mat-label>Username</mat-label>
+        <input autocomplete="off" matInput formControlName="username">
+      </mat-form-field>
 
-          <mat-form-field class="col-sm-12" appearance="outline">
-            <mat-label>Password</mat-label>
-            <input type="password" matInput formControlName="password">
-          </mat-form-field>
+      <mat-form-field class="col-sm-12" appearance="outline">
+        <mat-label>Password</mat-label>
+        <input autocomplete="off" type="password" matInput formControlName="password">
+      </mat-form-field>
 
-        </div>
-        <!-- <div class="form-group">
+      <!-- <div class="form-group">
           <label for="password"> Password :</label>
           <input formControlName="password" class="form-control" id="password" type="password" />
         </div> -->
-        <!-- <button type="submit" mat-raised-btn>OK</button> -->
-        <div class="button">
-          <button color="accent" mat-fab aria-label="Example">
-            <i class="material-icons">
-              arrow_forward_ios
-            </i>
-          </button>
-        </div>
+      <!-- <button type="submit" mat-raised-btn>OK</button> -->
+      <div class="button">
+        <button [disabled]="loginForm.invalid" matTooltip="Login" matTooltipPosition="above" color="accent" mat-fab
+          aria-label="Example">
+          <i class="material-icons">
+            arrow_forward_ios
+          </i>
+        </button>
       </div>
     </form>
   </div>
-</div>
