@@ -23,10 +23,12 @@
       <div class="button">
         <button [disabled]="loginForm.invalid" matTooltip="Login" matTooltipPosition="above" color="accent" mat-fab
           aria-label="Example">
-          <i class="material-icons">
+          <i *ngIf="!spinner" class="material-icons">
             arrow_forward_ios
           </i>
         </button>
       </div>
     </form>
+    <mat-progress-bar style="width: 100%;" color="accent" *ngIf="spinner" mode="indeterminate"></mat-progress-bar>
+
   </div>

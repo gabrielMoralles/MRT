@@ -17,9 +17,11 @@ import { LoginDialogComponent } from './dialogs/login-dialog/login-dialog.compon
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  public loginForm: any
-  public users: Usuario[] = []
-  public route: string
+  public loginForm: any;
+  public users: Usuario[] = [];
+  public route: string;
+  public spinner: boolean = false;
+
   constructor(
     private formBuilder: FormBuilder,
     private loginService: LoginService,
@@ -42,7 +44,7 @@ export class LoginComponent implements OnInit {
 
   }
   login() {
-
+    this.spinner = true
     this.loginService.getLogin().subscribe(
 
       (data) => { this.users = data },
@@ -65,7 +67,10 @@ export class LoginComponent implements OnInit {
 
 
             }
-            this.router.navigate(['home'])
+            setTimeout(value => {
+              this.router.navigate(['home'])
+
+            }, 1000)
 
           } else {
             // alert('Usuário ou senha inválidos')
