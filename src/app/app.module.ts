@@ -16,6 +16,7 @@ import { OrdemComponent } from "./ordem/ordem.component";
 import { NovaOrdemComponent } from "./nova-ordem/nova-ordem.component";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { MaterialModule } from "../assets/modules/material.module";
+import { MenuDialogComponent } from './shared/navbar/dialogs/menu-dialog/menu-dialog.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { MaterialModule } from "../assets/modules/material.module";
     ProdutosComponent,
     UserComponent,
     OrdemComponent,
-    NovaOrdemComponent
+    NovaOrdemComponent,
+    MenuDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -36,6 +38,7 @@ import { MaterialModule } from "../assets/modules/material.module";
     BrowserAnimationsModule,
     MaterialModule
   ],
+  entryComponents: [MenuDialogComponent],
   providers: [CookieService, NavbarComponent],
   bootstrap: [AppComponent]
 })

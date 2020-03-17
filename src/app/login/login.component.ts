@@ -40,7 +40,9 @@ export class LoginComponent implements OnInit {
       password: [null, Validators.required]
 
     })
-
+    if (this.cookieService.get('permission')) {
+      this.router.navigate(['home'])
+    }
 
   }
   login() {

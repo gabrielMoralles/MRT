@@ -3,6 +3,7 @@
   width: 430px;
   background-color:white;
   border-radius: 10px;
+  position: relative;
 }
 .background {
   background-image: linear-gradient(
