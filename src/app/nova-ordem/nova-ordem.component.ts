@@ -15,39 +15,43 @@ export class NovaOrdemComponent implements OnInit {
   public IdOrdem: number;
   public produtos: produto[];
 
+  public forma_pag: string[] = [
+    "Cartão",
+    "Dinheiro"
 
+  ]
 
   constructor(
     private formBuilder: FormBuilder,
     private orderServices: OrdensService,
-    private activatedRoute:ActivatedRoute,
-    private ordensService : OrdensService,
-    private router:Router
+    private activatedRoute: ActivatedRoute,
+    private ordensService: OrdensService,
+    private router: Router
 
   ) { }
 
   ngOnInit() {
-    this.ordensService.getProduto().subscribe( value =>this.produtos = value )
+    this.ordensService.getProduto().subscribe(value => this.produtos = value)
 
     // this.IdOrdem = parseInt(this.activatedRoute.snapshot.url[1].path)
     this.formNew = this.formBuilder.group({
       cliente: [null, [Validators.required]],
-      data_pag:[null,Validators.required],
-      valor:[null,Validators.min(1)],
-      form_pag:[null,Validators.required],
-      desc:[null]
+      data_pag: [null, Validators.required],
+      valor: [null, Validators.min(1)],
+      form_pag: [null, Validators.required],
+      desc: [null]
     })
   }
 
-  register(){
+  register() {
 
     let data = this.formNew.getRawValue()
 
     this.ordensService.postOrdens(data).subscribe(
 
-      (err) =>{},
-      (data) =>{},
-      () =>{
+      (err) => { },
+      (data) => { },
+      () => {
 
         this.router.navigate(['home'])
       }

@@ -4,7 +4,8 @@ import {
   MatToolbarModule,
   MatIconModule,
   MatCardModule,
-  MatFormFieldModule
+  MatFormFieldModule,
+  MatNativeDateModule
 } from "@angular/material";
 import { NgModule } from "@angular/core";
 import { MatInputModule } from '@angular/material';
@@ -12,6 +13,8 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 
 @NgModule({
   imports: [
@@ -23,7 +26,10 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
     MatCardModule,
     MatDialogModule,
     MatProgressSpinnerModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    MatAutocompleteModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
 
   ],
   exports: [
@@ -36,7 +42,10 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
     MatInputModule,
     MatTooltipModule,
     MatProgressSpinnerModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    MatAutocompleteModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
 
   ]
 })
