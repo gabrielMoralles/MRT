@@ -69,10 +69,8 @@ export class LoginComponent implements OnInit {
 
 
             }
-            setTimeout(value => {
-              this.router.navigate(['home'])
+            this.router.navigate(['home'])
 
-            }, 1000)
 
           } else {
             // alert('Usuário ou senha inválidos')
