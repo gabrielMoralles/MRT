@@ -12,7 +12,6 @@
 	},
 	"private": true,
 	"dependencies": {
-		"node": "10.15.1",
 		"@angular/cli": "~8.2.0",
 		"@angular/compiler-cli": "~8.2.0",
 		"@angular/animations": "~8.2.0",
@@ -56,6 +55,7 @@
 		"tslint": "~5.15.0"
 	},
 	"engines": {
+		"node": "10.15.1",
 		"npm": "6.4.1"
 	}
 }
