@@ -40,7 +40,9 @@ export class LoginComponent implements OnInit {
       password: [null, Validators.required]
 
     })
-
+    if (this.cookieService.get('permission')) {
+      this.router.navigate(['home'])
+    }
 
   }
   login() {
@@ -67,10 +69,8 @@ export class LoginComponent implements OnInit {
 
 
             }
-            setTimeout(value => {
-              this.router.navigate(['home'])
+            this.router.navigate(['home'])
 
-            }, 1000)
 
           } else {
             // alert('Usuário ou senha inválidos')

@@ -22,6 +22,10 @@ export class OrdensService {
     let url = 'http://localhost:9095/produtos'
     return this.http.post<produto>(url, form)
   }
+  removeProduto(id: number) {
+    let url = `http://localhost:9095/remover-produtos/${id}`
+    return this.http.delete<any>(url)
+  }
   deleteProduto(id: number) {
     let url = `http://localhost:9095/produtos/${id}`
     return this.http.delete<any>(url)

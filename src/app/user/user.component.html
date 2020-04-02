@@ -8,32 +8,53 @@
         <div style="padding: 30px" class="container card">
             <div class="form-row">
                 <div class="form-group col-md-4">
-                    <label for="nome">Nome:</label>
-                    <input class="form-control" formControlName="nome_Funcionario" type="text">
+                    <mat-form-field class="col-sm-12" appearance="outline">
+                        <mat-label>Nome</mat-label>
+                        <input autocomplete="off" matInput formControlName="nome_Funcionario">
+                    </mat-form-field>
                 </div>
                 <div class="form-group col-md-4">
-                    <label for="nome">Email:</label>
-                    <input class="form-control" formControlName="email_Funcionario" type="text">
+                    <mat-form-field class="col-sm-12" appearance="outline">
+                        <mat-label>Email</mat-label>
+                        <input autocomplete="off" matInput formControlName="email_Funcionario">
+                    </mat-form-field>
                 </div>
                 <div class="form-group col-md-4">
-                    <label for="nome">Telefone:</label>
-                    <input class="form-control" formControlName="telefone_Funcionario" type="text">
+                    <mat-form-field class="col-sm-12" appearance="outline">
+                        <mat-label>Email</mat-label>
+                        <input autocomplete="off" matInput formControlName="telefone_Funcionario">
+                    </mat-form-field>
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-group col-md-4">
-                    <label for="nome">Cargo:</label>
+                    <!-- <label for="nome">Cargo:</label>
                     <select class="form-control" formControlName="cargo_Funcionario" name="Cargo" id="Cargo">
                         <option *ngFor="let cargo of cargos"(change)='onChange($event)' [value]="cargo">{{cargo}}</option>
-                    </select>
+                    </select> -->
+
+                    <mat-form-field class="col-sm-12"  appearance="outline">
+                        <mat-label>Assignee</mat-label>
+                        <input type="text" matInput formControlName="cargo_Funcionario" [matAutocomplete]="auto">
+                        <mat-autocomplete #auto="matAutocomplete">
+                          <mat-option *ngFor="let option of cargos" [value]="option">
+                            {{option}}
+                          </mat-option>
+                        </mat-autocomplete>
+                    </mat-form-field>
                 </div>
                 <div class="form-group col-md-4">
-                    <label for="nome">Usuario:</label>
-                    <input class="form-control"  autocomplete="off" formControlName="usuario" type="text">
+                    <mat-form-field class="col-sm-12" appearance="outline">
+                        <mat-label>Usuario</mat-label>
+                        <input autocomplete="off" matInput formControlName="usuario">
+                    </mat-form-field>
                 </div>
                 <div class="form-group col-md-4">
-                    <label for="nome">Senha:</label>
-                    <input class="form-control"  autocomplete="off" formControlName="senha" type="password">
+                    <mat-form-field class="col-sm-12" appearance="outline">
+                        <mat-label>Senha</mat-label>
+                        <input autocomplete="off" matInput formControlName="senha" type="password">
+                    </mat-form-field>
+                    
                 </div>
                 <input type="button" [disabled]="formNew.invalid" style="margin: 20px;" class="btn btn-success btn-sm btn-block btn-lg btn-block" type="submit">
             </div>
