@@ -18,6 +18,16 @@ module.exports.getProdutos = (application, req, res) => {
 		return res.send(results);
 	});
 };
+module.exports.removerProdutos = (application, req, res) => {
+	let id = req.params.id;
+	var connection = application.config.dbConnection;
+	var login_groupDAO = new application.app.models.produtos(connection);
+
+	login_groupDAO.removerProdutos(id, (error, results) => {
+		if (error) throw error;
+		return res.send(results);
+	});
+};
 module.exports.deleteProdutos = (application, req, res) => {
 	let id = req.params.id;
 	var connection = application.config.dbConnection;

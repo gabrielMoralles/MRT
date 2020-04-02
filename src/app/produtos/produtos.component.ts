@@ -4,6 +4,8 @@ import { OrdensService } from "../services/ordens.service";
 import { produto } from "./models/produto_model";
 import { RouteGuardService } from "../shared/route-guard.service";
 import { Router, ActivatedRoute } from "@angular/router";
+import { MatDialog, MatDialogConfig } from '@angular/material';
+import { DeleteProdModalComponent } from './dialogs/delete-prod-modal/delete-prod-modal.component';
 
 // import { ReactiveFormsModule } from '@angular/forms';
 
@@ -22,7 +24,8 @@ export class ProdutosComponent implements OnInit {
     private orderServices: OrdensService,
     private routeGuard: RouteGuardService,
     private router: Router,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private MatDialog: MatDialog
   ) { }
 
   ngOnInit() {
@@ -97,5 +100,23 @@ export class ProdutosComponent implements OnInit {
         this.getProdutos();
       }
     );
+  }
+  deleteRow(produto) {
+    const DialogConfig = new MatDialogConfig();
+    DialogConfig.data = {
+      name: produto
+    }
+    var openDialog = this.MatDialog.open(DeleteProdModalComponent, DialogConfig).afterClosed().subscribe(value => {
+      if (value == 'a') {
+        this.orderServices.removeProduto(produto).subscribe(
+          (err) => { console.log(err) },
+          (data) => { },
+          () => {
+            this.orderServices.getProduto().subscribe(value => this.produtos = value)
+          }
+        )
+      }
+    })
+    console.log(produto)
   }
 }

@@ -18,6 +18,16 @@ login_GroupDAO.prototype.getProduto = function(callback) {
 		callback
 	);
 };
+login_GroupDAO.prototype.removerProdutos = function(id, callback) {
+	console.log(id);
+	this._connection.query(
+		`
+		DELETE FROM estoque WHERE id = ?
+      `,
+		[ id ],
+		callback
+	);
+};
 login_GroupDAO.prototype.deleteProdutos = function(id, callback) {
 	console.log(id);
 	this._connection.query(

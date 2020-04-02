@@ -1,9 +1,35 @@
-.flex{
-    display: flex;
-    flex-direction: row;
+.flex {
+	display: flex;
+	flex-direction: row;
 }
 
-table{
-    margin-top: 50px;
-    width: 100%;
+table {
+	border-radius: 5px;
+	margin-top: 25px;
+	width: 100%;
+}
+
+.pointer {
+	cursor: pointer;
+}
+tr {
+	transition: 10;
+}
+.material-icons {
+	z-index: 100;
+	transition: 2000;
+}
+.button {
+	width: 100%;
+	display: flex;
+	justify-content: flex-end;
+}
+.tool-button {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+}
+.hover:hover {
+	cursor: pointer;
+	background-color: rgba(90, 89, 89, 0.205) !important;
 }

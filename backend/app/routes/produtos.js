@@ -2,6 +2,9 @@ module.exports = (application) => {
 	application.post('/produtos', (req, res) => {
 		application.app.controllers.produtos.postProdutos(application, req, res);
 	});
+	application.delete('/remover-produtos/:id', (req, res) => {
+		application.app.controllers.produtos.removerProdutos(application, req, res);
+	});
 	application.delete('/produtos/:id', (req, res) => {
 		application.app.controllers.produtos.deleteProdutos(application, req, res);
 	});
