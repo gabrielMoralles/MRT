@@ -40,10 +40,10 @@ export class ProdutosComponent implements OnInit {
     // }
     this.formNew = this.formBuilder.group({
       nome_Produto: [null, [Validators.required]],
-      valor_Custo: [null, [Validators.min(1)]],
-      valor_Venda: [null, [Validators.min(1)]],
-      qtd_Produto: [null, Validators.min(1)],
-      descricao_Produto: [null, Validators.max(255)],
+      valor_Custo: [null, [Validators.min(1), Validators.required]],
+      valor_Venda: [null, [Validators.min(1), Validators.required]],
+      qtd_Produto: [null, [Validators.min(1), Validators.required]],
+      descricao_Produto: [null, [Validators.max(255), Validators.required]],
       id_FornecedorProduto: [null]
     });
     this.getProdutos();

@@ -11,7 +11,7 @@ headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 export class LoginService {
 
 
-  private productNameURL = 'http://ec2-3-16-206-59.us-east-2.compute.amazonaws.com:9095/login'; //URL to web api
+  private productNameURL = 'http://localhost:9095/login'; //URL to web api
 
   constructor(private http: HttpClient) { }
 
@@ -20,7 +20,7 @@ export class LoginService {
     return this.http.get<any[]>(this.productNameURL)
   }
   postLogin(login: Usuario) {
-    let url = 'http://ec2-3-16-206-59.us-east-2.compute.amazonaws.com:9095/login'
+    let url = 'http://localhost:9095/login'
 
     return this.http.post<Usuario>(url, login)
   }
