@@ -24,4 +24,14 @@ export class LoginService {
 
     return this.http.post<Usuario>(url, login)
   }
+  forgotPass(email: string, user: Usuario) {
+    let url = 'http://localhost:9095/forgot'
+    let data = { email, user }
+    return this.http.post<Usuario[]>(url, data)
+  }
+  postPass(pass: string, email: string, user: Usuario) {
+    let url = 'http://localhost:9095/changePass'
+    let data = { email, user, pass }
+    return this.http.post<any>(url, data)
+  }
 }

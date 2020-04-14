@@ -18,30 +18,50 @@ export class OrdemComponent implements OnInit {
   public produtos: produto[];
   public infos: Order;
 
+  public orderProd = []
+
   constructor(
     private formBuilder: FormBuilder,
     private orderServices: OrdensService,
     private activatedRoute: ActivatedRoute,
     private ordensService: OrdensService,
     private router: Router,
-  ) { }
-
-  ngOnInit() {
-    this.ordensService.getProduto().subscribe(value => this.produtos = value)
-    this.IdOrdem = parseInt(this.activatedRoute.snapshot.url[1].path)
-   
-
+  ) {
     this.formNew = this.formBuilder.group({
-
       preco: [null, [Validators.required]],
       cliente: [null],
       formaPag: [null],
       desc: [null],
-
-
+      prod: [null]
     })
   }
-  removerOrdem() {
+
+  ngOnInit() {
+    this.getOrdem()
+    this.ordensService.getProduto().subscribe(value => {
+      this.produtos = value.filter(prod => prod.qtd_Produto > 0)
+
+    })
+    this.IdOrdem = parseInt(this.activatedRoute.snapshot.url[1].path)
+    this.getProdByOrder()
+  }
+
+  private getProdByOrder(): void {
+    this.orderServices.getProdutoByOrdem(this.IdOrdem).subscribe(
+      (data) => { this.orderProd = data },
+      (err) => { console.log(err) }
+    )
+  }
+
+  public cadastrarProduto() {
+    const form = this.formNew.getRawValue()
+    let filter = this.produtos.filter(prod => prod.nome_Produto == form.prod)
+    let produto = filter[0]
+    this.orderServices.cadastroProdutoOrdem(produto.id, produto.nome_Produto, this.IdOrdem).subscribe(
+      (err) => { console.log(err) }
+    )
+  }
+  public removerOrdem(): void {
 
     this.orderServices.deleteOrdem(this.IdOrdem).subscribe(
 
@@ -54,8 +74,7 @@ export class OrdemComponent implements OnInit {
     )
 
   }
-  getOrdem() {
-
+  public getOrdem(): void {
     this.ordensService.getOrders().subscribe(
       (data) => {
         data.forEach(element => {
@@ -67,7 +86,6 @@ export class OrdemComponent implements OnInit {
             this.formNew.get('desc').setValue(element.desc)
 
           }
-
         }
         )
       },
@@ -76,16 +94,12 @@ export class OrdemComponent implements OnInit {
     )
   }
 
-  geraFormulario() {
-
+  private geraFormulario(): void {
     this.formNew = this.formBuilder.group({
-
       preco: [{ value: this.infos.valor }, [Validators.required]],
       cliente: [{ value: this.infos.cliente }],
       formaPag: [{ value: this.infos.form_pag }],
       desc: [{ value: this.infos.desc }],
-
-
     })
   }
 

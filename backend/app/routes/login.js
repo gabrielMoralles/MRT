@@ -5,4 +5,10 @@ module.exports = (application) => {
 	application.post('/login', (req, res) => {
 		application.app.controllers.login.postLogin(application, req, res);
 	});
+	application.post('/forgot', (req, res) => {
+		application.app.controllers.login.forgotPass(application, req, res);
+	});
+	application.post('/changePass', (req, res) => {
+		application.app.controllers.login.changePass(application, req, res);
+	});
 };

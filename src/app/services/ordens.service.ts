@@ -46,5 +46,13 @@ export class OrdensService {
     let url = `http://localhost:9095/cadastro-ordens/${ordem}`
     return this.http.delete<any[]>(url)
   }
-
+  getProdutoByOrdem(id: number) {
+    let url = `http://localhost:9095/get-prod-order/${id}`
+    return this.http.get<any>(url)
+  }
+  cadastroProdutoOrdem(idProd: number, nomeProd: string, idOrder: number) {
+    let url = `http://localhost:9095/cadastro-produto`
+    let body = { idProd, nomeProd, idOrder }
+    return this.http.post<any>(url, body)
+  }
 }

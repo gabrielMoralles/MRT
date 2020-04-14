@@ -37,6 +37,31 @@ login_GroupDAO.prototype.deleteOrdens = function(id, callback) {
 		callback
 	);
 };
+login_GroupDAO.prototype.cadastroProdOrdens = function(idProd, prod, callback) {
+	this._connection.query(
+		`    
+		SELECT @num := (SELECT e.qtd_Produto FROM estoque AS e WHERE e.id = ?);
+  
+		UPDATE estoque AS e SET e.qtd_Produto = @num-1 
+		WHERE e.id = ?;
+		
+		Insert INTO prod_relation SET  ?;
+	  
+      `,
+		[ idProd, idProd, prod ],
+		callback
+	);
+};
+login_GroupDAO.prototype.getProdByOrdens = function(idOrder, callback) {
+	this._connection.query(
+		`
+	  SELECT * FROM  prod_relation where id_ordem = ?
+	  
+      `,
+		idOrder,
+		callback
+	);
+};
 
 module.exports = () => {
 	return login_GroupDAO;

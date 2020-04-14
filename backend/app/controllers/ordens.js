@@ -34,3 +34,33 @@ module.exports.deleteOrdens = (application, req, res) => {
 		return res.send(results);
 	});
 };
+module.exports.cadastroProdOrdens = (application, req, res) => {
+	let idProd = req.body.idProd;
+	let nomeProd = req.body.nomeProd;
+	let idOrder = req.body.idOrder;
+
+	let prod = {
+		id_prod: idProd,
+		nome_prod: nomeProd,
+		id_ordem: idOrder
+	};
+
+	var connection = application.config.dbConnection;
+	var login_groupDAO = new application.app.models.ordens(connection);
+
+	login_groupDAO.cadastroProdOrdens(idProd, prod, (error, results) => {
+		if (error) throw error;
+		return res.send(results);
+	});
+};
+module.exports.getProdByOrdens = (application, req, res) => {
+	let idOrder = req.params.id;
+
+	var connection = application.config.dbConnection;
+	var login_groupDAO = new application.app.models.ordens(connection);
+
+	login_groupDAO.getProdByOrdens(idOrder, (error, results) => {
+		if (error) throw error;
+		return res.send(results);
+	});
+};

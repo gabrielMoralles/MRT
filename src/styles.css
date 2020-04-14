@@ -28,3 +28,25 @@ textarea:focus,
 button:focus {
 	outline: none;
 }
+.red {
+	color: red;
+}
+.w-100 {
+	width: 100%;
+}
+.just-bet {
+	display: flex;
+	justify-content: space-between;
+}
+.just-center {
+	display: flex;
+	justify-content: center;
+}
+.just-right {
+	display: flex;
+	justify-content: flex-end;
+}
+.just-end {
+	display: flex;
+	justify-content: flex-end;
+}

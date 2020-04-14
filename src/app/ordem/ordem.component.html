@@ -8,6 +8,7 @@
     <div class="container card">
         <div class="form-row">
             <div class="form-group col-md-4">
+
                 <label for="preco">Preço:</label>
                 <input placeholder="Insira o Preço total da ordem." class="form-control" formControlName="preco"
                     type="text">
@@ -27,13 +28,9 @@
         </div>
         <div class="form-row">
             <div class="form-group col-md-12">
-                <label for="preco">Forma de Pagamento:</label>
-                <select formControlName="formaPag"  class="form-control">
-                    <option value="">Produto 1</option>
-                    <option value="">Produto 2</option>
-                    <option value="">Produto 3</option>
-                    <option value="">Produto 4</option>
-                    <option value="">Produto 5</option>
+                <label for="preco">Produtos:</label>
+                <select formControlName="prod"  class="form-control">
+                    <option *ngFor="let prod of produtos" [value] = "prod.nome_Produto">{{prod.nome_Produto}}</option>
                 </select>
             </div>
         </div>
@@ -42,12 +39,14 @@
             <textarea formControlName="desc" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
         </div>
         <div class="form-row">
-            <button class="btn btn-success col-md-12">OK</button>
+            <button class="btn btn-success col-md-12" (click)="cadastrarProduto()">OK</button>
         </div>
         <div class="form-row">
             <button (click)="removerOrdem()" class="btn btn-danger col-md-12">Deletar Ordem</button>
         </div>
     </div>
-
+    <div class="container card" *ngFor="let prod of orderProd" >
+        {{prod.nome_prod}}
+    </div>
 
 </form>
