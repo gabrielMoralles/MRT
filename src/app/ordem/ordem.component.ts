@@ -27,17 +27,13 @@ export class OrdemComponent implements OnInit {
     private ordensService: OrdensService,
     private router: Router,
   ) {
-    this.formNew = this.formBuilder.group({
-      preco: [null, [Validators.required]],
-      cliente: [null],
-      formaPag: [null],
-      desc: [null],
-      prod: [null]
-    })
+    this.getOrdem()
+    this.geraFormulario()
+
   }
 
   ngOnInit() {
-    this.getOrdem()
+    // this.getOrdem()
     this.ordensService.getProduto().subscribe(value => {
       this.produtos = value.filter(prod => prod.qtd_Produto > 0)
 
@@ -53,54 +49,55 @@ export class OrdemComponent implements OnInit {
     )
   }
 
-  public cadastrarProduto() {
+  public cadastrarProduto(): void {
     const form = this.formNew.getRawValue()
     let filter = this.produtos.filter(prod => prod.nome_Produto == form.prod)
     let produto = filter[0]
     this.orderServices.cadastroProdutoOrdem(produto.id, produto.nome_Produto, this.IdOrdem).subscribe(
-      (err) => { console.log(err) }
+      (data) => { this.getProdByOrder() },
+      (err) => { console.log(err) },
+      () => {
+      }
     )
   }
   public removerOrdem(): void {
-
     this.orderServices.deleteOrdem(this.IdOrdem).subscribe(
-
       (err) => { console.log(err) },
       (data) => { console.log(data) },
       () => {
-
         this.router.navigate(['/home'])
       }
     )
-
   }
+
   public getOrdem(): void {
     this.ordensService.getOrders().subscribe(
       (data) => {
-        data.forEach(element => {
-          if (element.id == this.IdOrdem) {
-            this.infos = element
-            this.formNew.get('preco').setValue(element.valor)
-            this.formNew.get('formaPag').setValue(element.form_pag)
-            this.formNew.get('cliente').setValue(element.cliente)
-            this.formNew.get('desc').setValue(element.desc)
+        this.infos = data.filter(value => value.id == this.IdOrdem)[0]
+        this.patchForm()
 
-          }
-        }
-        )
       },
-      () => {
-      }
     )
   }
 
-  private geraFormulario(): void {
-    this.formNew = this.formBuilder.group({
-      preco: [{ value: this.infos.valor }, [Validators.required]],
-      cliente: [{ value: this.infos.cliente }],
-      formaPag: [{ value: this.infos.form_pag }],
-      desc: [{ value: this.infos.desc }],
-    })
+  private patchForm(): void {
+
+    this.formNew.get('preco').setValue(this.infos.valor)
+    this.formNew.get('cliente').setValue(this.infos.cliente)
+    this.formNew.get('formaPag').setValue(this.infos.form_pag)
+    this.formNew.get('desc').setValue(this.infos.desc)
+
   }
 
+
+  private geraFormulario(): void {
+    this.formNew = this.formBuilder.group({
+      preco: [null, [Validators.required]],
+      cliente: [null],
+      formaPag: [null],
+      desc: [null],
+      prod: [null]
+    })
+
+  }
 }
