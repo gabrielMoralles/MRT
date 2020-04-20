@@ -70,8 +70,19 @@
             <button (click)="removerOrdem()" class="btn btn-danger col-md-12">Deletar Ordem</button>
         </div>
     </div>
-    <div class="container card" *ngFor="let prod of orderProd" >
-        {{prod.nome_prod}}
+
+    <div class="container card"  >
+        
+        <div *ngFor="let prod of orderProd" class="card row space-between">
+            <div>
+                {{prod.nome_prod}}
+            </div>
+            <div class="delete-btn" (click)="deleteProd(prod.id,prod.id_prod)">
+                <span class="material-icons">
+                    clear
+                    </span>
+            </div>
+        </div>
     </div>
 
 </form>

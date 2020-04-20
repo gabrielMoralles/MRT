@@ -64,3 +64,17 @@ module.exports.getProdByOrdens = (application, req, res) => {
 		return res.send(results);
 	});
 };
+
+module.exports.deleteProd = (application, req, res) => {
+	let idOrder = req.params.id;
+	let idProd = req.params.idProd;
+
+	console.log(idOrder, idProd);
+	var connection = application.config.dbConnection;
+	var login_groupDAO = new application.app.models.ordens(connection);
+
+	login_groupDAO.deleteProd(idOrder, idProd, (error, results) => {
+		if (error) throw error;
+		return res.send(results);
+	});
+};

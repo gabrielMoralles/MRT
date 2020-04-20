@@ -17,4 +17,7 @@ module.exports = (application) => {
 	application.get('/get-prod-order/:id', (req, res) => {
 		application.app.controllers.ordens.getProdByOrdens(application, req, res);
 	});
+	application.delete(`/delete-produto/:id/:idProd`, (req, res) => {
+		application.app.controllers.ordens.deleteProd(application, req, res);
+	});
 };

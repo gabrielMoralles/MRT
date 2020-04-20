@@ -55,4 +55,8 @@ export class OrdensService {
     let body = { idProd, nomeProd, idOrder }
     return this.http.post<any>(url, body)
   }
+  removeProd(idProd: number, idProdOrder: number) {
+    let url = `http://localhost:9095/delete-produto/${idProd}/${idProdOrder}`
+    return this.http.delete<any>(url)
+  }
 }

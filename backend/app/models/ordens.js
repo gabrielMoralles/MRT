@@ -62,6 +62,21 @@ login_GroupDAO.prototype.getProdByOrdens = function(idOrder, callback) {
 		callback
 	);
 };
+login_GroupDAO.prototype.deleteProd = function(id, idProd, callback) {
+	this._connection.query(
+		`
+		SELECT @num := (SELECT e.qtd_Produto FROM estoque AS e WHERE e.id = ?);
+  
+		UPDATE estoque AS e SET e.qtd_Produto = @num+1 
+		WHERE e.id = ?;
+
+	  DELETE FROM  prod_relation where id = ?;
+	  
+      `,
+		[ idProd, idProd, id ],
+		callback
+	);
+};
 
 module.exports = () => {
 	return login_GroupDAO;

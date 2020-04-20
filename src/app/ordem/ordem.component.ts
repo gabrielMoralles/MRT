@@ -34,12 +34,17 @@ export class OrdemComponent implements OnInit {
 
   ngOnInit() {
     // this.getOrdem()
+    this.getProdutos()
+    this.IdOrdem = parseInt(this.activatedRoute.snapshot.url[1].path)
+    this.getProdByOrder()
+
+  }
+
+  private getProdutos() {
     this.ordensService.getProduto().subscribe(value => {
       this.produtos = value.filter(prod => prod.qtd_Produto > 0)
 
     })
-    this.IdOrdem = parseInt(this.activatedRoute.snapshot.url[1].path)
-    this.getProdByOrder()
   }
 
   private getProdByOrder(): void {
@@ -54,7 +59,10 @@ export class OrdemComponent implements OnInit {
     let filter = this.produtos.filter(prod => prod.nome_Produto == form.prod)
     let produto = filter[0]
     this.orderServices.cadastroProdutoOrdem(produto.id, produto.nome_Produto, this.IdOrdem).subscribe(
-      (data) => { this.getProdByOrder() },
+      (data) => {
+        this.getProdutos()
+        this.getProdByOrder()
+      },
       (err) => { console.log(err) },
       () => {
       }
@@ -99,5 +107,17 @@ export class OrdemComponent implements OnInit {
       prod: [null]
     })
 
+  }
+
+  public deleteProd(id: number, id_Prod: number): void {
+    this.ordensService.removeProd(id, id_Prod).subscribe(
+      (data) => { this.getProdByOrder() },
+      (err) => {
+        console.log(err)
+      },
+      () => {
+
+      }
+    )
   }
 }
