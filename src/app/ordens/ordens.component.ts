@@ -5,6 +5,8 @@ import { produto } from '../produtos/models/produto_model';
 import { element } from 'protractor';
 import { CookieService } from 'ngx-cookie-service';
 import { NavbarComponent } from '../shared/navbar/navbar.component'
+import { MatDialog } from '@angular/material';
+import { InventoryDialogComponent } from './dialogs/inventory-dialog/inventory-dialog.component';
 
 @Component({
   selector: 'app-ordens',
@@ -20,12 +22,13 @@ export class OrdensComponent implements OnInit {
   constructor(
     private orderService: OrdensService,
     private cookieService: CookieService,
-    private navbar:NavbarComponent
+    private navbar: NavbarComponent,
+    private matDialogService: MatDialog
 
   ) { }
 
   ngOnInit() {
-    
+
     this.permission = this.cookieService.get('permission')
     this.navbar.setPermission(this.permission)
     this.orderService.getOrders().subscribe(
@@ -41,16 +44,17 @@ export class OrdensComponent implements OnInit {
   }
   obterInventario() {
 
-    this.orderService.getProduto().subscribe(
-      value => {
-        value.forEach(element => {
-          if (element.qtd_Produto == 0) {
-            this.lst.push(element.nome_Produto)
-          }
-        })
-        alert(`Os itens: ${this.lst} estão em falta.`)
-      }
+    this.matDialogService.open(InventoryDialogComponent)
+    // this.orderService.getProduto().subscribe(
+    //   value => {
+    //     value.forEach(element => {
+    //       if (element.qtd_Produto == 0) {
+    //         this.lst.push(element.nome_Produto)
+    //       }
+    //     })
+    //     alert(`Os itens: ${this.lst} estão em falta.`)
+    //   }
 
-    )
+    // )
   }
 }

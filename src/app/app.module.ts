@@ -18,6 +18,7 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { MaterialModule } from "../assets/modules/material.module";
 import { MenuDialogComponent } from './shared/navbar/dialogs/menu-dialog/menu-dialog.component';
 import { DeleteProdModalComponent } from './produtos/dialogs/delete-prod-modal/delete-prod-modal.component';
+import { InventoryDialogComponent } from './ordens/dialogs/inventory-dialog/inventory-dialog.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { DeleteProdModalComponent } from './produtos/dialogs/delete-prod-modal/d
     OrdemComponent,
     NovaOrdemComponent,
     MenuDialogComponent,
-    DeleteProdModalComponent
+    DeleteProdModalComponent,
+    InventoryDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -40,7 +42,7 @@ import { DeleteProdModalComponent } from './produtos/dialogs/delete-prod-modal/d
     BrowserAnimationsModule,
     MaterialModule
   ],
-  entryComponents: [MenuDialogComponent, DeleteProdModalComponent],
+  entryComponents: [MenuDialogComponent, DeleteProdModalComponent, InventoryDialogComponent],
   providers: [CookieService, NavbarComponent],
   bootstrap: [AppComponent]
 })

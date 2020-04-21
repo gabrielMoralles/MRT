@@ -1,12 +1,17 @@
-.title{
-
-
-    margin-top: 20px;
-    margin-bottom: 20px;
-   
+.title {
+	padding-top: 30px;
+	margin-bottom: 20px;
 }
 
-.hover :hover{
+.table {
+	margin-top: 30px;
+	border-top-right-radius: 5px !important;
+	border-top-left-radius: 5px !important;
+}
 
-    background-color: black;
+.icon {
+	font-size: 18px;
+}
+.hover:hover {
+	background-color: rgb(228, 225, 225);
 }
