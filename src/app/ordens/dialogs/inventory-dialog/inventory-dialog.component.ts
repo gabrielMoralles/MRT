@@ -8,7 +8,7 @@ import { MatDialog } from '@angular/material';
   styleUrls: ['./inventory-dialog.component.css']
 })
 export class InventoryDialogComponent implements OnInit {
-  private lst = []
+  public lst = []
   constructor(
     private orderService: OrdensService,
     private matDialog: MatDialog
