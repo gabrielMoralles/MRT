@@ -20,7 +20,7 @@ export class LoginService {
     return this.http.get<any[]>(this.productNameURL)
   }
   postLogin(login: Usuario) {
-    let url = 'http://localhost:9095/login'
+    let url = 'http://ec2-54-233-179-45.sa-east-1.compute.amazonaws.com:9095/'
 
     return this.http.post<Usuario>(url, login)
   }
