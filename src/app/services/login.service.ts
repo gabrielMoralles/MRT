@@ -11,7 +11,7 @@ headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 export class LoginService {
 
 
-  private productNameURL = 'http://localhost:9095/login'; //URL to web api
+  private productNameURL = 'http://54.233.179.45:9095/login'; //URL to web api
 
   constructor(private http: HttpClient) { }
 
