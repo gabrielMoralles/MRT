@@ -12,7 +12,7 @@ export class OrdensService {
   private loginURL = ''
   constructor(private http: HttpClient) {
 
-    ambiente == 'dev' ? this.loginURL = 'http://localhost:9095' : this.loginURL = 'http://ec2-18-230-148-207.sa-east-1.compute.amazonaws.com'
+    ambiente == 'dev' ? this.loginURL = 'http://localhost:9095' : this.loginURL = 'http://ec2-18-230-148-207.sa-east-1.compute.amazonaws.com:9095'
 
   }
   getOrders(): Observable<Order[]> {
