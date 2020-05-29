@@ -69,6 +69,11 @@
         <div class="form-row">
             <button (click)="removerOrdem()" class="btn btn-danger col-md-12">Deletar Ordem</button>
         </div>
+         <button [routerLink]="['/print',IdOrdem]" routerLinkActive="router-link-active"  mat-mini-fab aria-label="Example icon-button with a heart icon">
+   <span class="material-icons">
+print
+</span>
+  </button>
     </div>
 
     <div class="container card"  >

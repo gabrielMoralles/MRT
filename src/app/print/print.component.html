@@ -1,0 +1,30 @@
+
+
+<div class="container">
+    <div class="card">
+        <div class="d-flex justify-content-between margem-padrão">
+            <div>Cliente: {{infos.cliente}}</div>
+            <div class="data">Valor: {{infos.cliente}}</div>
+            <div>Forma de Pagamento: {{infos.form_pag}}</div>
+        </div>
+        <div class="d-flex justify-content-between margem-padrão">
+            <div>Data de emissão {{infos.data}}</div>
+            <div class="data">Data de pagamento: {{infos.data_pag | date}}</div>
+            <div>Descrição: {{infos.desc}}</div>
+        </div>
+
+        <div class="produtos margem-padrão">
+            <div class="font-32px margin-top-32px">Produtos</div>
+            
+            <div  *ngFor="let prod of orderProd">
+                <div class="card prods">
+                    {{prod.nome_prod}}
+                </div>
+            </div>
+        </div>
+
+        
+
+    </div>
+
+</div>

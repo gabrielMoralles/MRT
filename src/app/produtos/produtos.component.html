@@ -49,12 +49,12 @@
       <thead style="text-align: center;">
         <tr>
           <th scope="col">Nome</th>
-          <th scope="col">Valor Custo</th>
-          <th scope="col">Valor Venda</th>
+          <th scope="col">Valor de Custo</th>
+          <th scope="col">Valor de Venda</th>
           <th scope="col">Quantidade</th>
           <th scope="col">Descrição</th>
           <th scope="col">Fornecedor</th>
-          <th scope="col">Actions</th>
+          <th scope="col">Ações</th>
         </tr>
       </thead>
 
@@ -69,17 +69,17 @@
           <td>
             <div class="flex tool-button">
               <div>
+                <!-- <button class="btn btn-danger" (click)="addProduto(produto.id,produto.qtd_Produto)"> > </button> -->
+                <span style="color: red;" class="material-icons pointer"(click)="deleteProduto(produto.id,produto.qtd_Produto)" >
+                  remove_circle_outline
+                  </span>
+              </div>
+              <div>
                 <!-- <button class=" btn btn-danger" (click)="deleteProduto(produto.id,produto.qtd_Produto)">
                   < </button> -->
                   <span class="material-icons pointer" (click)="addProduto(produto.id,produto.qtd_Produto)">
                     add_circle_outline
                     </span>
-              </div>
-              <div>
-                <!-- <button class="btn btn-danger" (click)="addProduto(produto.id,produto.qtd_Produto)"> > </button> -->
-                <span style="color: red;" class="material-icons pointer"(click)="deleteProduto(produto.id,produto.qtd_Produto)" >
-                  remove_circle_outline
-                  </span>
               </div>
             </div>
 

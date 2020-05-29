@@ -1,0 +1,29 @@
+.w-100 {
+	width: 100%;
+}
+.container {
+	margin-top: 50px;
+}
+.card {
+	padding-bottom: 10px;
+}
+
+.d-flex {
+	margin-top: 16px;
+	border-bottom: 2px solid grey;
+}
+
+.margem-padrão {
+	margin-left: 30px;
+	margin-right: 30px;
+}
+.margin-top-32px {
+	margin-top: 32px;
+}
+.font-32px {
+	font-size: 32px;
+}
+.prods {
+	padding: 10px;
+	margin-top: 16px;
+}

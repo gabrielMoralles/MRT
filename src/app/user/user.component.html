@@ -16,13 +16,13 @@
                         <input autocomplete="off" matInput formControlName="email_Funcionario">
                     </mat-form-field>
                     <mat-form-field class="col-sm-4" appearance="outline">
-                        <mat-label>Email</mat-label>
+                        <mat-label>Telefone</mat-label>
                         <input autocomplete="off" matInput formControlName="telefone_Funcionario">
                     </mat-form-field>
             </div>
-            <div class="form-row">
+            <div class="row">
                     <mat-form-field class="col-sm-4"  appearance="outline">
-                        <mat-label>Assignee</mat-label>
+                        <mat-label>Cargo</mat-label>
                         <input type="text" matInput formControlName="cargo_Funcionario" [matAutocomplete]="auto">
                         <mat-autocomplete #auto="matAutocomplete">
                           <mat-option *ngFor="let option of cargos" [value]="option">

@@ -19,6 +19,7 @@ import { MaterialModule } from "../assets/modules/material.module";
 import { MenuDialogComponent } from './shared/navbar/dialogs/menu-dialog/menu-dialog.component';
 import { DeleteProdModalComponent } from './produtos/dialogs/delete-prod-modal/delete-prod-modal.component';
 import { InventoryDialogComponent } from './ordens/dialogs/inventory-dialog/inventory-dialog.component';
+import { PrintComponent } from './print/print.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { InventoryDialogComponent } from './ordens/dialogs/inventory-dialog/inve
     NovaOrdemComponent,
     MenuDialogComponent,
     DeleteProdModalComponent,
-    InventoryDialogComponent
+    InventoryDialogComponent,
+    PrintComponent
   ],
   imports: [
     BrowserModule,

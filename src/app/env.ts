@@ -1,1 +1,1 @@
-export const ambiente: string = 'homol';
+export const ambiente: string = 'dev';
