@@ -26,8 +26,8 @@ export class ForgotPasswordDialogComponent implements OnInit {
 
   private generateFormForgot() {
     this.formForgot = this.fb.group({
-      email: ['gabrel@email.com', Validators.required],
-      user: ['gabriel.silva', Validators.required],
+      email: [null, Validators.required],
+      user: [null, Validators.required],
       senha: [null, Validators.required]
     })
   }

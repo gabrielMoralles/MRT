@@ -7,27 +7,27 @@
         New Quote
       </button>
     </div> -->
-    <table class="table table-bordered table-striped">
-        <thead class="thead-dark">
-            <tr>
+    <table class="table table-bordered centered table-striped">
+        <thead class="thead-dark centered">
+            <tr class="txt-align-center">
                 <th>Cliente</th>
                 <th>Data de Serviço</th>
-                <th>Data de Pagamento</th>
+                <!-- <th>Data de Pagamento</th> -->
                 <th>Valor</th>
-                <th>Descrição</th>
-                <th>Forma de Pagamento</th>
+                <!-- <th>Descrição</th> -->
+                <!-- <th>Forma de Pagamento</th> -->
                 <th>Status</th>
-                <th>Link</th>
+                <th>Ações</th>
             </tr>
         </thead>
         <tbody >
-            <tr class="hover"  *ngFor="let order of orders">
+            <tr class="hover txt-align-center"  *ngFor="let order of orders">
                 <td>{{order.cliente}}</td>
                 <td>{{order.data}}</td>
-                <td>{{order.data_pag| date}}</td>
-                <td>{{order.valor}}</td>
-                <td>{{order.desc}}</td>
-                <td>{{order.form_pag}}</td>
+                <!-- <td>{{order.data_pag| date}}</td> -->
+                <td>{{order.valor | currency:'BRL'}}</td>
+                <!-- <td>{{order.desc}}</td> -->
+                <!-- <td>{{order.form_pag}}</td> -->
                 <td>Status</td>
                 <td><button [routerLink]="['/ordem',order.id]" routerLinkActive="router-link-active"
                         class=" btn btn-sm btn-success flex"><span class="material-icons icon">
