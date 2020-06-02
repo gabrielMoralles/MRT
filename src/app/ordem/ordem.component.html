@@ -4,8 +4,8 @@
 <form action="" [formGroup]="formNew">
 
 
-    <h1 class="container"> Ordem de Serviço : {{IdOrdem}}</h1>
     <div class="container card">
+        <h1 > Ordem de Serviço : {{IdOrdem}}</h1>
         <div class="form-row">
             <!-- <div class="form-group col-md-4">
 
@@ -62,21 +62,24 @@
         <div class="margin-top-35px">
             <h1>Cadastrar Produtos</h1>
         </div>
-        <mat-form-field class="col-sm-12 " appearance="outline">
-            
-            <mat-label>Produto</mat-label>
-            <input type="text"
-                    matInput
-                    formControlName="prod"
-                    [matAutocomplete]="auto">
-            <mat-autocomplete #auto="matAutocomplete">
-                <mat-option *ngFor="let prod of produtos" [value]="prod.nome_Produto">
-                {{prod.nome_Produto}}
-                </mat-option>
-            </mat-autocomplete>
-            
-        </mat-form-field>
-        <button class="btn btn-primary col-sm-2 margin-left-15px" (click)="cadastrarProduto()" >Adicionar</button>
+
+        <div class="row">
+            <mat-form-field class=" col-sm-12 " appearance="outline">
+                
+                <mat-label>Produto</mat-label>
+                <input type="text"
+                        matInput
+                        formControlName="prod"
+                        [matAutocomplete]="auto">
+                <mat-autocomplete #auto="matAutocomplete">
+                    <mat-option *ngFor="let prod of produtos" [value]="prod.nome_Produto">
+                    {{prod.nome_Produto}}
+                    </mat-option>
+                </mat-autocomplete>
+                
+            </mat-form-field>
+        </div>
+        <button class="btn btn-primary col-sm-2 margin-left-10px" (click)="cadastrarProduto()" >Adicionar</button>
     </div>
 
     <div class="container card"  >
