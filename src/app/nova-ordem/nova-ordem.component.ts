@@ -40,7 +40,8 @@ export class NovaOrdemComponent implements OnInit {
       data: [new Date(), Validators.required],
       valor: [null, Validators.min(1)],
       form_pag: [null, Validators.required],
-      desc: [null]
+      desc: [null],
+      status: ['aberto']
     })
   }
 

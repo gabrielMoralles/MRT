@@ -18,6 +18,9 @@
     <li *ngIf="permission == 'FULL'" class="nav-item">
       <a [ngClass]="{'active' : tab == 'users'}" class="nav-link" [routerLink]="['/users']">Usuários</a>
     </li>
+    <li class="nav-item">
+      <a [ngClass]="{'active' : tab == 'nova-ordem'}" class="nav-link" [routerLink]="['/nova-ordem']">Nova Ordem</a>
+    </li>
   </ul>
   <div style="margin-right: 2%; cursor: pointer;" class="nav-item" class="rounded float-left" (click)="onClick()">
     <i class="material-icons">
