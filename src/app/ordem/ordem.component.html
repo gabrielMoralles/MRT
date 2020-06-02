@@ -46,34 +46,37 @@
                     <option *ngFor="let prod of produtos" [value] = "prod.nome_Produto">{{prod.nome_Produto}}</option>
                 </select>
             </div> -->
-            <mat-form-field class="col-sm-12" appearance="outline">
-                <mat-label>Produto</mat-label>
-                <input type="text"
-                       matInput
-                       formControlName="prod"
-                       [matAutocomplete]="auto">
-                <mat-autocomplete #auto="matAutocomplete">
-                  <mat-option *ngFor="let prod of produtos" [value]="prod.nome_Produto">
-                    {{prod.nome_Produto}}
-                  </mat-option>
-                </mat-autocomplete>
-            </mat-form-field>
         </div>
         <div class="form-group">
             <label for="exampleFormControlTextarea1">Descrição :</label>
             <textarea formControlName="desc" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
         </div>
-        <div class="form-row">
-            <button class="btn btn-success col-md-12" (click)="cadastrarProduto()">OK</button>
+     <div class="row margin-left-10px">
+            
+            <div class="">
+                <button (click)="removerOrdem()" class="btn btn-danger">Deletar Ordem</button>
+            </div>
+             <button [routerLink]="['/print',IdOrdem]" class="margin-left-15px" routerLinkActive="router-link-active"  mat-mini-fab aria-label="Example icon-button with a heart icon">
+       <span class="material-icons">print</span></button>
         </div>
-        <div class="form-row">
-            <button (click)="removerOrdem()" class="btn btn-danger col-md-12">Deletar Ordem</button>
+        <div class="margin-top-35px">
+            <h1>Cadastrar Produtos</h1>
         </div>
-         <button [routerLink]="['/print',IdOrdem]" routerLinkActive="router-link-active"  mat-mini-fab aria-label="Example icon-button with a heart icon">
-   <span class="material-icons">
-print
-</span>
-  </button>
+        <mat-form-field class="col-sm-12 " appearance="outline">
+            
+            <mat-label>Produto</mat-label>
+            <input type="text"
+                    matInput
+                    formControlName="prod"
+                    [matAutocomplete]="auto">
+            <mat-autocomplete #auto="matAutocomplete">
+                <mat-option *ngFor="let prod of produtos" [value]="prod.nome_Produto">
+                {{prod.nome_Produto}}
+                </mat-option>
+            </mat-autocomplete>
+            
+        </mat-form-field>
+        <button class="btn btn-primary col-sm-2 margin-left-15px" (click)="cadastrarProduto()" >Adicionar</button>
     </div>
 
     <div class="container card"  >
