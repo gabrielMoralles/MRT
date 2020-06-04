@@ -13,7 +13,7 @@ login_GroupDAO.prototype.postProduto = function(produto, callback) {
 login_GroupDAO.prototype.getProduto = function(callback) {
 	this._connection.query(
 		`
-      SELECT * FROM estoque ORDER BY id DESC
+      SELECT * FROM estoque ORDER BY id_estoque DESC
       `,
 		callback
 	);

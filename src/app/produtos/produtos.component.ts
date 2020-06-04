@@ -43,7 +43,8 @@ export class ProdutosComponent implements OnInit {
       valor_Custo: [null, [Validators.min(1), Validators.required]],
       valor_Venda: [null, [Validators.min(1), Validators.required]],
       qtd_Produto: [null, [Validators.min(1), Validators.required]],
-      descricao_Produto: [null, [Validators.max(255), Validators.required]],
+      desc_Produto: [null, [Validators.max(255), Validators.required]],
+      fl_ativo: [0],
       id_FornecedorProduto: [null]
     });
     this.getProdutos();
