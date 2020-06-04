@@ -41,7 +41,7 @@ export class NovaOrdemComponent implements OnInit {
       valor: [null, Validators.min(1)],
       form_pag: [null, Validators.required],
       desc: [null],
-      status: ['aberto']
+      status: ['Novo']
     })
   }
 
