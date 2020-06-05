@@ -59,7 +59,7 @@
       </thead>
 
       <tbody >
-        <tr (dblclick)="deleteRow(produto.id)" *ngFor="let produto of produtos" class="hover">
+        <tr (dblclick)="deleteRow(produto.id_estoque)" *ngFor="let produto of produtos" class="hover">
           <td>{{ produto.nome_Produto }}</td>
           <td>{{ produto.valor_Custo }}</td>
           <td>{{ produto.valor_Venda }}</td>
