@@ -42,23 +42,14 @@ export class UserComponent implements OnInit {
 
     this.getLogin()
     this.formNew = this.formBuilder.group({
-      id_funcionario: [null],
+      id_Funcionario: [null],
       nome_Funcionario: [null, [Validators.minLength(1), Validators.max(50), Validators.required]],
-      email_Funcionario: [null, [Validators.email, Validators.required]],
+      email: [null, [Validators.email, Validators.required]],
       telefone_Funcionario: [null, [Validators.min(1), Validators.required]],
       cargo_Funcionario: [null, Validators.required],
       usuario: [null, Validators.required],
       senha: [null, Validators.required]
     })
-
-
-
-    // this.orderService.getCargos().subscribe(value => {
-    //   this.cargos = value
-    //   console.log(value)
-    // })
-
-
   }
 
 
