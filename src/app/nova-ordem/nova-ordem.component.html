@@ -7,14 +7,14 @@
         <div class="row">
                 <mat-form-field class="col-sm-4" appearance="outline">
                     <mat-label>Cliente</mat-label>
-                    <input autocomplete="off" matInput formControlName="cliente">
+                    <input autocomplete="off" matInput formControlName="nome_Cliente">
                     </mat-form-field>
-                <mat-form-field class="col-md-4" appearance="outline">
+                <!-- <mat-form-field class="col-md-4" appearance="outline">
                     <mat-label>Data de Serviço</mat-label>
-                    <input matInput [matDatepicker]="picker" formControlName="data" >
+                    <input matInput [matDatepicker]="picker" formControlName="data_Inicio" >
                     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                     <mat-datepicker #picker></mat-datepicker>
-                </mat-form-field>
+                </mat-form-field> -->
                 <mat-form-field class="col-sm-4" appearance="outline">
                     <mat-label>Valor </mat-label>
                     <input autocomplete="off" matInput formControlName="valor">
@@ -30,7 +30,7 @@
                     </div> -->
                     <mat-form-field class="col-sm-12"  appearance="outline">
                         <mat-label>Forma de Pagamento</mat-label>
-                        <input type="text" matInput formControlName="form_pag" [matAutocomplete]="auto">
+                        <input type="text" matInput formControlName="forma_pgto" [matAutocomplete]="auto">
                         <mat-autocomplete #auto="matAutocomplete">
                             <mat-option *ngFor="let option of forma_pag" [value]="option">
                                 {{option}}
