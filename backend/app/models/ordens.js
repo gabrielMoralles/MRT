@@ -5,7 +5,7 @@ function login_GroupDAO(connection) {
 login_GroupDAO.prototype.ordens = function(callback) {
 	this._connection.query(
 		`
-      SELECT * FROM tabela_ordem
+      SELECT * FROM ordem
       `,
 		callback
 	);
@@ -22,7 +22,7 @@ login_GroupDAO.prototype.getCargos = function(id, callback) {
 login_GroupDAO.prototype.cadastroOrdens = function(id, callback) {
 	this._connection.query(
 		`
-      INSERT INTO tabela_ordem set ?
+      INSERT INTO ordem set ?
       `,
 		id,
 		callback
@@ -31,7 +31,7 @@ login_GroupDAO.prototype.cadastroOrdens = function(id, callback) {
 login_GroupDAO.prototype.deleteOrdens = function(id, callback) {
 	this._connection.query(
 		`
-      DELETE FROM tabela_ordem where id = ?
+      DELETE FROM ordem where id = ?
       `,
 		id,
 		callback
