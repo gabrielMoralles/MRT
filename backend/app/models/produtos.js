@@ -22,7 +22,7 @@ login_GroupDAO.prototype.removerProdutos = function(id, callback) {
 	console.log(id);
 	this._connection.query(
 		`
-		DELETE FROM estoque WHERE id = ?
+		DELETE FROM estoque WHERE id_estoque = ?
       `,
 		[ id ],
 		callback
@@ -33,7 +33,7 @@ login_GroupDAO.prototype.deleteProdutos = function(id, callback) {
 	this._connection.query(
 		`
       
-      SELECT @num := (SELECT e.qtd_Produto FROM estoque AS e WHERE e.id = ?);
+      SELECT @num := (SELECT e.qtd_Produto FROM estoque AS e WHERE e.id_estoque = ?);
   
       UPDATE estoque AS e SET e.qtd_Produto = @num-1 
       WHERE e.id = ?;
@@ -50,7 +50,7 @@ login_GroupDAO.prototype.addProdutos = function(id, callback) {
       SELECT @num := (SELECT e.qtd_Produto FROM estoque AS e WHERE e.id = ?);
   
       UPDATE estoque AS e SET e.qtd_Produto = @num+1 
-      WHERE e.id = ?;
+      WHERE e.id_estoque = ?;
       `,
 		[ id, id ],
 		callback
