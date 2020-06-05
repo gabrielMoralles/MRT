@@ -22,7 +22,7 @@
         </thead>
         <tbody >
             <tr class="hover txt-align-center"  *ngFor="let order of orders">
-                <td>{{order.cliente}}</td>
+                <td>{{order.nome_Cliente}}</td>
                 <td>{{order.data | date}}</td>
                 <!-- <td>{{order.data_pag| date}}</td> -->
                 <td>{{order.valor | currency:'BRL'}}</td>
