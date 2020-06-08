@@ -31,7 +31,7 @@ login_GroupDAO.prototype.cadastroOrdens = function(id, callback) {
 login_GroupDAO.prototype.deleteOrdens = function(id, callback) {
 	this._connection.query(
 		`
-      DELETE FROM ordem where id = ?
+      	UPDATE fl_ativo from estoque where id_estoque = ?;
       `,
 		id,
 		callback
