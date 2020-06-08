@@ -40,7 +40,7 @@ module.exports.cadastroProdOrdens = (application, req, res) => {
 	let idOrder = req.body.idOrder;
 
 	let prod = {
-		id_prod: idProd,
+		id_estoque: idProd,
 		nome_prod: nomeProd,
 		id_ordem: idOrder
 	};

@@ -35,11 +35,10 @@ export class NovaOrdemComponent implements OnInit {
 
     // this.IdOrdem = parseInt(this.activatedRoute.snapshot.url[1].path)
     this.formNew = this.formBuilder.group({
-      cliente: [null, [Validators.required]],
-      data_pag: [new Date()],
-      data: [new Date(), Validators.required],
+      nome_Cliente: [null, [Validators.required]],
+      // data_Inicio: [new Date(), Validators.required],
       valor: [null, Validators.min(1)],
-      form_pag: [null, Validators.required],
+      forma_pgto: [null, Validators.required],
       desc: [null],
       status: ['Novo']
     })

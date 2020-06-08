@@ -18,27 +18,27 @@ login_GroupDAO.prototype.getProduto = function(callback) {
 		callback
 	);
 };
-login_GroupDAO.prototype.removerProdutos = function(id, callback) {
-	console.log(id);
+login_GroupDAO.prototype.removerProdutos = function(id_estoque, callback) {
+	console.log(id_estoque);
 	this._connection.query(
 		`
-		DELETE FROM estoque WHERE id = ?
+		DELETE FROM estoque WHERE id_estoque = ?
       `,
-		[ id ],
+		[ id_estoque ],
 		callback
 	);
 };
-login_GroupDAO.prototype.deleteProdutos = function(id, callback) {
-	console.log(id);
+login_GroupDAO.prototype.deleteProdutos = function(id_estoque, callback) {
+	console.log(id_estoque);
 	this._connection.query(
 		`
       
-      SELECT @num := (SELECT e.qtd_Produto FROM estoque AS e WHERE e.id = ?);
+      SELECT @num := (SELECT e.qtd_Produto FROM estoque AS e WHERE e.id_estoque = ?);
   
       UPDATE estoque AS e SET e.qtd_Produto = @num-1 
       WHERE e.id = ?;
       `,
-		[ id, id ],
+		[ id_estoque, id_estoque ],
 		callback
 	);
 };
@@ -50,7 +50,7 @@ login_GroupDAO.prototype.addProdutos = function(id, callback) {
       SELECT @num := (SELECT e.qtd_Produto FROM estoque AS e WHERE e.id = ?);
   
       UPDATE estoque AS e SET e.qtd_Produto = @num+1 
-      WHERE e.id = ?;
+      WHERE e.id_estoque = ?;
       `,
 		[ id, id ],
 		callback

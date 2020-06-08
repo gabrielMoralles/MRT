@@ -13,7 +13,7 @@
                     </mat-form-field>
                     <mat-form-field class="col-sm-4" appearance="outline">
                         <mat-label>Email</mat-label>
-                        <input autocomplete="off" matInput formControlName="email_Funcionario">
+                        <input autocomplete="off" matInput formControlName="email">
                     </mat-form-field>
                     <mat-form-field class="col-sm-4" appearance="outline">
                         <mat-label>Telefone</mat-label>
@@ -50,17 +50,15 @@
                     <td scope="col">Telefone</td>
                     <td scope="col">Cargo</td>
                     <td scope="col">Usuario</td>
-                    <td scope="col">Senha</td>
                 </tr>
             </thead>
             <tbody>
                 <tr *ngFor="let item of logins">
                     <td> {{item.nome_Funcionario}} </td>
-                    <td> {{item.email_Funcionario}} </td>
+                    <td> {{item.email}} </td>
                     <td> {{item.telefone_Funcionario}} </td>
                     <td> {{item.cargo_Funcionario}} </td>
                     <td> {{item.usuario}} </td>
-                    <td> {{item.senha}}</td>
                 </tr>
             </tbody>
         </table>

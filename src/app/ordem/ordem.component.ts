@@ -58,7 +58,7 @@ export class OrdemComponent implements OnInit {
     const form = this.formNew.getRawValue()
     let filter = this.produtos.filter(prod => prod.nome_Produto == form.prod)
     let produto = filter[0]
-    this.orderServices.cadastroProdutoOrdem(produto.id, produto.nome_Produto, this.IdOrdem).subscribe(
+    this.orderServices.cadastroProdutoOrdem(produto.id_estoque, produto.nome_Produto, this.IdOrdem).subscribe(
       (data) => {
         this.getProdutos()
         this.getProdByOrder()

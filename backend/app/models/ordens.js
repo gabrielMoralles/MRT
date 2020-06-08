@@ -5,7 +5,7 @@ function login_GroupDAO(connection) {
 login_GroupDAO.prototype.ordens = function(callback) {
 	this._connection.query(
 		`
-      SELECT * FROM tabela_ordem
+      SELECT * FROM ordem
       `,
 		callback
 	);
@@ -22,7 +22,7 @@ login_GroupDAO.prototype.getCargos = function(id, callback) {
 login_GroupDAO.prototype.cadastroOrdens = function(id, callback) {
 	this._connection.query(
 		`
-      INSERT INTO tabela_ordem set ?
+      INSERT INTO ordem set ?
       `,
 		id,
 		callback
@@ -31,7 +31,7 @@ login_GroupDAO.prototype.cadastroOrdens = function(id, callback) {
 login_GroupDAO.prototype.deleteOrdens = function(id, callback) {
 	this._connection.query(
 		`
-      DELETE FROM tabela_ordem where id = ?
+      DELETE FROM ordem where id = ?
       `,
 		id,
 		callback
@@ -40,10 +40,10 @@ login_GroupDAO.prototype.deleteOrdens = function(id, callback) {
 login_GroupDAO.prototype.cadastroProdOrdens = function(idProd, prod, callback) {
 	this._connection.query(
 		`    
-		SELECT @num := (SELECT e.qtd_Produto FROM estoque AS e WHERE e.id = ?);
+		SELECT @num := (SELECT e.qtd_Produto FROM estoque AS e WHERE e.id_estoque = ?);
   
 		UPDATE estoque AS e SET e.qtd_Produto = @num-1 
-		WHERE e.id = ?;
+		WHERE e.id_estoque = ?;
 		
 		Insert INTO prod_relation SET  ?;
 	  
@@ -65,12 +65,12 @@ login_GroupDAO.prototype.getProdByOrdens = function(idOrder, callback) {
 login_GroupDAO.prototype.deleteProd = function(id, idProd, callback) {
 	this._connection.query(
 		`
-		SELECT @num := (SELECT e.qtd_Produto FROM estoque AS e WHERE e.id = ?);
+		SELECT @num := (SELECT e.qtd_Produto FROM estoque AS e WHERE e.id_estoque = ?);
   
 		UPDATE estoque AS e SET e.qtd_Produto = @num+1 
-		WHERE e.id = ?;
+		WHERE e.id_estoque = ?;
 
-	  DELETE FROM  prod_relation where id = ?;
+	  DELETE FROM  prod_relation where id_relation = ?;
 	  
       `,
 		[ idProd, idProd, id ],
