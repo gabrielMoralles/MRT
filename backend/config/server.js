@@ -6,7 +6,7 @@ const cors = require('cors');
 const corsOptions = {
 	origin: '*',
 	optionsSuccessStatus: 200
-};
+}
 
 const app = express();
 
