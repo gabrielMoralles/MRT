@@ -1,6 +1,6 @@
 module.exports.postProdutos = (application, req, res) => {
 	let produto = req.body;
-
+	produto['fl_ativo'] = 1;
 	var connection = application.config.dbConnection;
 	var login_groupDAO = new application.app.models.produtos(connection);
 

@@ -22,7 +22,7 @@ login_GroupDAO.prototype.removerProdutos = function(id_estoque, callback) {
 	console.log(id_estoque);
 	this._connection.query(
 		`
-		DELETE FROM estoque WHERE id_estoque = ?
+			UPDATE estoque set fl_ativo = 0  where id_estoque = ?;
       `,
 		[ id_estoque ],
 		callback
