@@ -67,7 +67,8 @@ export class ProdutosComponent implements OnInit {
   getProdutos() {
     this.orderServices.getProduto().subscribe(
       data => {
-        this.produtos = data;
+        this.produtos = data.filter(data => data.fl_ativo > 0)
+        console.log(this.produtos)
       },
       err => {
         console.log(err);
@@ -79,7 +80,9 @@ export class ProdutosComponent implements OnInit {
     console.log(id);
     if (qtd > 0) {
       this.orderServices.deleteProduto(id).subscribe(
-        data => { },
+        data => {
+          this.getProdutos();
+        },
         err => {
           console.log(err);
         },
@@ -112,7 +115,7 @@ export class ProdutosComponent implements OnInit {
           (err) => { console.log(err) },
           (data) => { },
           () => {
-            this.orderServices.getProduto().subscribe(value => this.produtos = value)
+            this.orderServices.getProduto().subscribe(value => this.getProdutos())
           }
         )
       }

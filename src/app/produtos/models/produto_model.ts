@@ -5,7 +5,7 @@ export interface produto {
     valor_Venda: number,
     qtd_Produto: number,
     descricao_Produto: string,
-    id_Fornecedor: number
-
+    id_Fornecedor: number,
+    fl_ativo: number
 
 }
