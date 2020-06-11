@@ -42,7 +42,8 @@ import { PrintComponent } from './print/print.component';
     LoginModule,
     RouterModule.forRoot(ROUTES),
     BrowserAnimationsModule,
-    MaterialModule
+    MaterialModule,
+
   ],
   entryComponents: [MenuDialogComponent, DeleteProdModalComponent, InventoryDialogComponent],
   providers: [CookieService, NavbarComponent],
