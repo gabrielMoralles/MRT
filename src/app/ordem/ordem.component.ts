@@ -75,6 +75,9 @@ export class OrdemComponent implements OnInit {
       (err) => { console.log(err) },
       (data) => { console.log(data) },
       () => {
+        this.snackBar.open('Ordem removida com sucesso.', '', {
+          duration: 2000,
+        })
         this.router.navigate(['/home'])
       }
     )

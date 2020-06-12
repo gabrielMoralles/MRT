@@ -4,7 +4,7 @@ import { OrdensService } from "../services/ordens.service";
 import { produto } from "./models/produto_model";
 import { RouteGuardService } from "../shared/route-guard.service";
 import { Router, ActivatedRoute } from "@angular/router";
-import { MatDialog, MatDialogConfig } from '@angular/material';
+import { MatDialog, MatDialogConfig, MatSnackBar } from '@angular/material';
 import { DeleteProdModalComponent } from './dialogs/delete-prod-modal/delete-prod-modal.component';
 
 // import { ReactiveFormsModule } from '@angular/forms';
@@ -25,7 +25,8 @@ export class ProdutosComponent implements OnInit {
     private routeGuard: RouteGuardService,
     private router: Router,
     private activatedRoute: ActivatedRoute,
-    private MatDialog: MatDialog
+    private MatDialog: MatDialog,
+    private snackBar: MatSnackBar
   ) { }
 
   ngOnInit() {
@@ -115,7 +116,12 @@ export class ProdutosComponent implements OnInit {
           (err) => { console.log(err) },
           (data) => { },
           () => {
-            this.orderServices.getProduto().subscribe(value => this.getProdutos())
+            this.orderServices.getProduto().subscribe(value => {
+              this.snackBar.open('Produto removido com sucesso.', '', {
+                duration: 2000,
+              })
+              this.getProdutos()
+            })
           }
         )
       }
