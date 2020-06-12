@@ -6,6 +6,7 @@ import { produto } from '../produtos/models/produto_model';
 import { element } from 'protractor';
 import { Ordem } from '../services/model/ordem_model';
 import { Order } from '../ordens/models/order_model';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-ordem',
@@ -26,6 +27,7 @@ export class OrdemComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private ordensService: OrdensService,
     private router: Router,
+    private snackBar: MatSnackBar
   ) {
     this.getOrdem()
     this.geraFormulario()
@@ -125,10 +127,21 @@ export class OrdemComponent implements OnInit {
     order.forma_pgto = this.formNew.get('formaPag').value;
     order.valor = this.formNew.get('preco').value;
     order.nome_Cliente = this.formNew.get('cliente').value;
+    order.desc = this.formNew.get('desc').value;
 
-    this.ordensService.updateProduct(this.IdOrdem, order).subscribe(value => {
-      console.log(value)
-    })
+    this.ordensService.updateProduct(this.IdOrdem, order).subscribe(
+      (err) => {
+        console.log(err)
+      },
+      (data) => {
+
+      },
+      () => {
+        this.snackBar.open('Informações alteradas com sucesso.', '', {
+          duration: 2000,
+        })
+      }
+    )
     console.log(order);
   }
 }

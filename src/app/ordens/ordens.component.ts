@@ -33,7 +33,7 @@ export class OrdensComponent implements OnInit {
     this.navbar.setPermission(this.permission)
     this.orderService.getOrders().subscribe(
 
-      (data) => { this.orders = data },
+      (data) => { this.orders = data.filter(value => value.fl_ativo > 0) },
       (err) => { },
       () => {
 

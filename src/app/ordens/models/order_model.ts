@@ -21,4 +21,5 @@ export interface Order {
     status: number;
     data: Date;
     data_pag: Date;
+    fl_ativo: number
 }

@@ -54,12 +54,14 @@
      <div class="row margin-left-10px">
             
             <div class="">
-                <button (click)="removerOrdem()" class="btn btn-danger">Deletar Ordem</button>
+                <button mat-button color="warn" (click)="removerOrdem()">Deletar Ordem</button>
             </div>
-             <button matTooltip="Imprimir" [routerLink]="['/print',IdOrdem]" class="margin-left-15px" routerLinkActive="router-link-active"  mat-mini-fab aria-label="Example icon-button with a heart icon">
-       <span class="material-icons">print</span></button>
-             <button  color="default" matTooltip="Atualizar" (click)="updateOrder()" class="margin-left-15px"  mat-mini-fab aria-label="Example icon-button with a heart icon">
-       <span class="material-icons">sync_alt</span></button>
+             <!-- <button matTooltip="Imprimir" [routerLink]="['/print',IdOrdem]" class="margin-left-15px" routerLinkActive="router-link-active"  mat-mini-fab aria-label="Example icon-button with a heart icon">
+       <span class="material-icons">print</span></button> -->
+             <button mat-button color="default"  [routerLink]="['/print',IdOrdem]" class="margin-left-15px">Imprimir</button>
+             <!-- <button  color="default" matTooltip="Atualizar" (click)="updateOrder()" class="margin-left-15px"  mat-mini-fab aria-label="Example icon-button with a heart icon">
+       <span class="material-icons">sync_alt</span></button> -->
+             <button mat-button  color="default"  (click)="updateOrder()" class="margin-left-15px">Atualizar</button>
         </div>
         <div class="margin-top-35px">
             <h1>Cadastrar Produtos</h1>
@@ -81,7 +83,7 @@
                 
             </mat-form-field>
         </div>
-        <button class="btn btn-primary col-sm-2 margin-left-10px" (click)="cadastrarProduto()" >Adicionar</button>
+        <button mat-button class=" col-sm-1 " (click)="cadastrarProduto()" >Adicionar</button>
     </div>
 
     <div class="container card"  >
