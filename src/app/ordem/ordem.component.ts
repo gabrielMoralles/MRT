@@ -81,7 +81,8 @@ export class OrdemComponent implements OnInit {
   public getOrdem(): void {
     this.ordensService.getOrders().subscribe(
       (data) => {
-        this.infos = data.filter(value => value.id == this.IdOrdem)[0]
+        console.log(data)
+        this.infos = data.filter(value => value.id_ordem == this.IdOrdem)[0]
         this.patchForm()
 
       },
@@ -89,10 +90,9 @@ export class OrdemComponent implements OnInit {
   }
 
   private patchForm(): void {
-
     this.formNew.get('preco').setValue(this.infos.valor)
-    this.formNew.get('cliente').setValue(this.infos.cliente)
-    this.formNew.get('formaPag').setValue(this.infos.form_pag)
+    this.formNew.get('cliente').setValue(this.infos.nome_Cliente)
+    this.formNew.get('formaPag').setValue(this.infos.forma_pgto)
     this.formNew.get('desc').setValue(this.infos.desc)
 
   }
@@ -119,5 +119,16 @@ export class OrdemComponent implements OnInit {
 
       }
     )
+  }
+  public updateOrder() {
+    let order = this.infos
+    order.forma_pgto = this.formNew.get('formaPag').value;
+    order.valor = this.formNew.get('preco').value;
+    order.nome_Cliente = this.formNew.get('cliente').value;
+
+    this.ordensService.updateProduct(this.IdOrdem, order).subscribe(value => {
+      console.log(value)
+    })
+    console.log(order);
   }
 }

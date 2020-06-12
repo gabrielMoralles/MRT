@@ -77,6 +77,15 @@ login_GroupDAO.prototype.deleteProd = function(id, idProd, callback) {
 		callback
 	);
 };
+login_GroupDAO.prototype.updateProd = function(id, order, callback) {
+	this._connection.query(
+		`
+		UPDATE ordem SET ? where id_ordem = ?
+      `,
+		[ order, id ],
+		callback
+	);
+};
 
 module.exports = () => {
 	return login_GroupDAO;

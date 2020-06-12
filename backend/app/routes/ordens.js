@@ -20,4 +20,7 @@ module.exports = (application) => {
 	application.delete(`/delete-produto/:id/:idProd`, (req, res) => {
 		application.app.controllers.ordens.deleteProd(application, req, res);
 	});
+	application.post(`/update-produto/:id`, (req, res) => {
+		application.app.controllers.ordens.updateProd(application, req, res);
+	});
 };

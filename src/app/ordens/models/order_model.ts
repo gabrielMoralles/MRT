@@ -1,5 +1,5 @@
 // export interface Order {
-    
+
 //     id_OrdemServico:number,
 //     dt_servico:Date,
 //     dt_PagamentoOS:Date,
@@ -12,13 +12,13 @@
 
 // }
 export interface Order {
-    
-    id:number,
-    cliente:string;
-    valor:number;
-    desc:string;
-    form_pag:string
-    status:number;
-    data:Date;
-    data_pag:Date;
+
+    id_ordem: number,
+    nome_Cliente: string;
+    valor: number;
+    desc: string;
+    forma_pgto: string
+    status: number;
+    data: Date;
+    data_pag: Date;
 }

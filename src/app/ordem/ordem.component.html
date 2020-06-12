@@ -56,8 +56,10 @@
             <div class="">
                 <button (click)="removerOrdem()" class="btn btn-danger">Deletar Ordem</button>
             </div>
-             <button [routerLink]="['/print',IdOrdem]" class="margin-left-15px" routerLinkActive="router-link-active"  mat-mini-fab aria-label="Example icon-button with a heart icon">
+             <button matTooltip="Imprimir" [routerLink]="['/print',IdOrdem]" class="margin-left-15px" routerLinkActive="router-link-active"  mat-mini-fab aria-label="Example icon-button with a heart icon">
        <span class="material-icons">print</span></button>
+             <button  color="default" matTooltip="Atualizar" (click)="updateOrder()" class="margin-left-15px"  mat-mini-fab aria-label="Example icon-button with a heart icon">
+       <span class="material-icons">sync_alt</span></button>
         </div>
         <div class="margin-top-35px">
             <h1>Cadastrar Produtos</h1>

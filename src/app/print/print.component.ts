@@ -25,7 +25,7 @@ export class PrintComponent implements OnInit {
 
     this.ordensService.getOrders().subscribe(
       (data) => {
-        this.infos = data.filter(value => value.id == this.IdOrdem)[0]
+        this.infos = data.filter(value => value.id_ordem == this.IdOrdem)[0]
         console.log(this.infos)
       },
     )
