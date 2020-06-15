@@ -99,6 +99,7 @@ export class OrdemComponent implements OnInit {
     this.formNew.get('cliente').setValue(this.infos.nome_Cliente)
     this.formNew.get('formaPag').setValue(this.infos.forma_pgto)
     this.formNew.get('desc').setValue(this.infos.desc)
+    this.formNew.get('status').setValue(this.infos.status)
 
   }
 
@@ -108,6 +109,7 @@ export class OrdemComponent implements OnInit {
       preco: [null, [Validators.required]],
       cliente: [null],
       formaPag: [null],
+      status: [null],
       desc: [null],
       prod: [null]
     })
@@ -131,6 +133,7 @@ export class OrdemComponent implements OnInit {
     order.valor = this.formNew.get('preco').value;
     order.nome_Cliente = this.formNew.get('cliente').value;
     order.desc = this.formNew.get('desc').value;
+    order.status = this.formNew.get('status').value;
 
     this.ordensService.updateProduct(this.IdOrdem, order).subscribe(
       (err) => {

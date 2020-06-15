@@ -22,11 +22,7 @@
                 <input placeholder="Insira o nome do cliente da ordem." class="form-control" formControlName="cliente"
                     type="text">
             </div> -->
-            <mat-form-field class="col-sm-4" appearance="outline">
-                <mat-label for="NomeProd">Cliente </mat-label>
-                <input matInput formControlName="cliente" type="text" />
-              </mat-form-field>
-
+            
             <!-- <div class="form-group col-md-4">
                 <label for="preco">Forma de Pagamento</label>
                 <select formControlName="formaPag" class="formaPag" class="form-control" name="" id="" placeholder="Escolha a forma de pagamento.">
@@ -37,9 +33,26 @@
             <mat-form-field class="col-sm-4" appearance="outline">
                 <mat-label for="NomeProd">Forma de Pagamento </mat-label>
                 <input matInput formControlName="formaPag" type="text" />
-              </mat-form-field>
+            </mat-form-field>
+
+            <mat-form-field class="col-sm-4" appearance="outline">
+                <mat-label for="NomeProd">Cliente </mat-label>
+                <input matInput formControlName="cliente" type="text" />
+            </mat-form-field>
         </div>
         <div class="form-row">
+
+           
+
+             <mat-form-field class="col-sm-4" appearance="outline">
+                <mat-label>Status</mat-label>
+                <select formControlName="status" matNativeControl >
+                    <option value="Novo">Novo</option>
+                    <option value="Em Andamento">Em Andamento</option>
+                    <option value="Finalizado">Finalizado</option>
+                </select>
+            </mat-form-field>
+            <button mat-button matTooltip="Atualizar informações alteradas." color="default"  (click)="updateOrder()" class="margin-left-15px updateButton">Atualizar</button>
             <!-- <div class="form-group col-md-12">
                 <label for="preco">Produtos:</label>
                 <select formControlName="prod"  class="form-control">
@@ -61,7 +74,6 @@
              <button mat-button color="default"  [routerLink]="['/print',IdOrdem]" class="margin-left-15px">Imprimir</button>
              <!-- <button  color="default" matTooltip="Atualizar" (click)="updateOrder()" class="margin-left-15px"  mat-mini-fab aria-label="Example icon-button with a heart icon">
        <span class="material-icons">sync_alt</span></button> -->
-             <button mat-button  color="default"  (click)="updateOrder()" class="margin-left-15px">Atualizar</button>
         </div>
         <div class="margin-top-35px">
             <h1>Cadastrar Produtos</h1>
