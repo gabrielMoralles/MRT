@@ -41,6 +41,7 @@ export class EditUserModalComponent implements OnInit {
 
   generateForm(user) {
     let usuario = user
+    console.log(usuario)
     this.formNew = this.formBuilder.group({
       id_Funcionario: [usuario.id_Funcionario],
       nome_Funcionario: [usuario.nome_Funcionario, [Validators.minLength(1), Validators.max(50), Validators.required]],
