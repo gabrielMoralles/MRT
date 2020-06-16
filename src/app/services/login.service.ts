@@ -37,6 +37,11 @@ export class LoginService {
   postPass(pass: string, email: string, user: Usuario) {
     let url = `${this.loginURL}/changePass`
     let data = { email, user, pass }
-    return this.http.post<any>(url, data)
+    return this.http.post<any>(url, user)
   }
+  updateLogin(user) {
+    let url = `${this.loginURL}/update-usuario`
+    return this.http.post<any>(url, user)
+  }
+
 }

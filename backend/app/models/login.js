@@ -40,6 +40,15 @@ login_GroupDAO.prototype.changePass = function(pass, email, user, callback) {
 		callback
 	);
 };
+login_GroupDAO.prototype.updateUser = function(user, callback) {
+	this._connection.query(
+		`
+		UPDATE funcionario SET ? where id_Funcionario = ?
+		`,
+		[ user, user.id_Funcionario ],
+		callback
+	);
+};
 
 module.exports = () => {
 	return login_GroupDAO;

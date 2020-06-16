@@ -6,6 +6,9 @@ import { LoginService } from '../services/login.service';
 import { OrdensService } from '../services/ordens.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { RouteGuardService } from '../shared/route-guard.service';
+import { MatDialog } from '@angular/material';
+import { EditUserModalComponent } from './edit-user-modal/edit-user-modal.component';
+import { EmmitUserService } from './edit-user-modal/service/emmitUser.service';
 
 @Component({
   selector: 'app-user',
@@ -29,7 +32,9 @@ export class UserComponent implements OnInit {
     private orderService: OrdensService,
     private activatedRoute: ActivatedRoute,
     private routeGuard: RouteGuardService,
-    private router: Router
+    private router: Router,
+    private matDialog: MatDialog,
+    private emmitUser: EmmitUserService
   ) { }
 
   ngOnInit() {
@@ -79,9 +84,11 @@ export class UserComponent implements OnInit {
 
   }
   onChange(event: Event): void {
-
     console.log(event)
+  }
 
-
+  openEditModal(user: Funcionario) {
+    this.emmitUser.setUser(user)
+    this.matDialog.open(EditUserModalComponent)
   }
 }

@@ -1,11 +1,11 @@
-<app-navbar></app-navbar>
-
-<div style="padding: 30px;" class="card container">
-    
-    <h1 class="container">Cadastrar Usuários</h1>
-    <form [formGroup]="formNew" (ngSubmit)="postLogin()" action="POST">
-
+ <form [formGroup]="formNew" (ngSubmit)="postLogin()" action="POST">
         <div style="padding: 30px" class="container card">
+            <div class="space-btw">
+                <h1>Editar Usuário</h1>
+                <span (click)="closeModal()" class="material-icons icon-close">
+                    highlight_off
+                </span>
+            </div>
             <div class="row">
                     <mat-form-field class="col-sm-4" appearance="outline">
                         <mat-label>Nome</mat-label>
@@ -41,25 +41,4 @@
                 </div>
                 <input type="button" [disabled]="formNew.invalid"  class="btn btn-success col-sm-12" type="submit">
             </div>
-    </form>
-        <table class="table table-striped centered table-bordered" style="margin-top: 30px">
-            <thead>
-                <tr>
-                    <td scope="col">Nome</td>
-                    <td scope="col">Email</td>
-                    <td scope="col">Telefone</td>
-                    <td scope="col">Cargo</td>
-                    <td scope="col">Usuario</td>
-                </tr>
-            </thead>
-            <tbody>
-                <tr class="hover" *ngFor="let item of logins" (click)="openEditModal(item)" >
-                    <td> {{item.nome_Funcionario}} </td>
-                    <td> {{item.email}} </td>
-                    <td> {{item.telefone_Funcionario}} </td>
-                    <td> {{item.cargo_Funcionario}} </td>
-                    <td> {{item.usuario}} </td>
-                </tr>
-            </tbody>
-        </table>
-</div>
+    </form> 

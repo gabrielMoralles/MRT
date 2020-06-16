@@ -20,6 +20,8 @@ import { MenuDialogComponent } from './shared/navbar/dialogs/menu-dialog/menu-di
 import { DeleteProdModalComponent } from './produtos/dialogs/delete-prod-modal/delete-prod-modal.component';
 import { InventoryDialogComponent } from './ordens/dialogs/inventory-dialog/inventory-dialog.component';
 import { PrintComponent } from './print/print.component';
+import { EditUserModalComponent } from './user/edit-user-modal/edit-user-modal.component';
+import { EmmitUserService } from './user/edit-user-modal/service/emmitUser.service';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,8 @@ import { PrintComponent } from './print/print.component';
     MenuDialogComponent,
     DeleteProdModalComponent,
     InventoryDialogComponent,
-    PrintComponent
+    PrintComponent,
+    EditUserModalComponent
   ],
   imports: [
     BrowserModule,
@@ -45,8 +48,8 @@ import { PrintComponent } from './print/print.component';
     MaterialModule,
 
   ],
-  entryComponents: [MenuDialogComponent, DeleteProdModalComponent, InventoryDialogComponent],
-  providers: [CookieService, NavbarComponent],
+  entryComponents: [MenuDialogComponent, DeleteProdModalComponent, InventoryDialogComponent, EditUserModalComponent],
+  providers: [CookieService, NavbarComponent, EmmitUserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

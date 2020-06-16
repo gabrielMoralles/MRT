@@ -11,4 +11,7 @@ module.exports = (application) => {
 	application.post('/changePass', (req, res) => {
 		application.app.controllers.login.changePass(application, req, res);
 	});
+	application.post('/update-usuario', (req, res) => {
+		application.app.controllers.login.updateUser(application, req, res);
+	});
 };
