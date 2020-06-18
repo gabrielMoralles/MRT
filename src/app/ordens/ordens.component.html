@@ -11,26 +11,26 @@
         <thead class="thead-dark centered">
             <tr class="txt-align-center">
                 <th>Cliente</th>
-                <th>Data de Serviço</th>
+                <!--<th>Data de Serviço</th>-->
                 <!-- <th>Data de Pagamento</th> -->
                 <th>Valor</th>
                 <!-- <th>Descrição</th> -->
                 <!-- <th>Forma de Pagamento</th> -->
                 <th>Status</th>
-                <th>Ações</th>
+                <th>Editar</th>
             </tr>
         </thead>
         <tbody >
             <tr class="hover txt-align-center"  *ngFor="let order of orders">
                 <td>{{order.nome_Cliente}}</td>
-                <td>{{order.data | date}}</td>
+                <!--<td>{{order.data | date}}</td>-->
                 <!-- <td>{{order.data_pag| date}}</td> -->
                 <td>{{order.valor | currency:'BRL'}}</td>
                 <!-- <td>{{order.desc}}</td> -->
                 <!-- <td>{{order.form_pag}}</td> -->
                 <td>{{order.status}}</td>
                 <td><button [routerLink]="['/ordem',order.id_ordem]" routerLinkActive="router-link-active"
-                        class=" btn btn-sm btn-success flex"><span class="material-icons icon">
+                        class=" btn btn-outline-ligh"><span class="material-icons icon">
                             create
                             </span></button></td>
             </tr>
@@ -38,10 +38,10 @@
     </table>
     <div class="float-right">
         <div class="btn-group">
-            <button class="btn btn-success "  matTooltip="Nova Ordem"[routerLink]="['../nova-ordem']" routerLinkActive="router-link-active"><span class="material-icons">
+            <button class = "btn btn-success "  matTooltip="Nova Ordem"[routerLink]="['../nova-ordem']" routerLinkActive="router-link-active"><span class="material-icons">
                 playlist_add
                 </span></button>
-            <button class="btn btn-warning" matTooltip="Obter Inventário"(click)="obterInventario()"><span class="material-icons">
+            <button class="btn btn-dark" matTooltip="Obter Inventário"(click)="obterInventario()"><span class="material-icons">
                 list
                 </span></button>
         </div>
