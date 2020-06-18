@@ -44,7 +44,7 @@ export class OrdemComponent implements OnInit {
 
   private getProdutos() {
     this.ordensService.getProduto().subscribe(value => {
-      this.produtos = value.filter(prod => prod.qtd_Produto > 0)
+      this.produtos = value.filter(prod => prod.qtd_Produto > 0 && prod.fl_ativo === 1)
 
     })
   }
