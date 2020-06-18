@@ -28,7 +28,7 @@ export class OrdensComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-
+    this.matDialogService.closeAll()
     this.permission = this.cookieService.get('permission')
     this.navbar.setPermission(this.permission)
     this.orderService.getOrders().subscribe(
