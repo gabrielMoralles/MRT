@@ -70,10 +70,10 @@ login_GroupDAO.prototype.deleteProd = function(id, idProd, callback) {
 		UPDATE estoque AS e SET e.qtd_Produto = @num+1 
 		WHERE e.id_estoque = ?;
 
-	  	UPDATE prod_relation SET fl_ativo = 0 where id_estoque = ?;
+	  	DELETE FROM prod_relation WHERE id_relation = ?;
 	  
       `,
-		[ idProd, idProd, idProd ],
+		[ idProd, idProd, id ],
 		callback
 	);
 };
