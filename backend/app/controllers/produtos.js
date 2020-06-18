@@ -30,6 +30,7 @@ module.exports.removerProdutos = (application, req, res) => {
 };
 module.exports.deleteProdutos = (application, req, res) => {
 	let id = req.params.id;
+	console.log('controllers');
 	var connection = application.config.dbConnection;
 	var login_groupDAO = new application.app.models.produtos(connection);
 
