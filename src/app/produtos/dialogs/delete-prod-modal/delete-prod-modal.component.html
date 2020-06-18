@@ -1,12 +1,70 @@
 
-<p>Deseja remover este produto?</p>
-<div class="flex">
-    <div style="display: flex; justify-content: space-between;">
-        <button mat-button color="primary" (click)="close('b')">fechar</button>
-        <button mat-raised-button color="warn" (click)="close('a')" >Remover</button>
-
-    </div>
-    
+ <div class="space-btw">
+    <h1>Editar Produto</h1>
+    <span (click)="close('b')" class="material-icons icon-close">
+        highlight_off
+    </span>
 </div>
+<form [formGroup]="formNew">
+ <div class="card container" style="padding: 30px">
+   <div class="form-row">
+
+     <mat-form-field class="col-sm-4" appearance="outline">
+       <mat-label for="NomeProd">Nome Produto</mat-label>
+       <input mask="[00]\[000]" matInput formControlName="nome_Produto" type="text" />
+     </mat-form-field>
+     <mat-form-field class="col-sm-4" appearance="outline">
+       <mat-label for="NomeProd">Valor Custo</mat-label>
+       <input matInput formControlName="valor_Custo" type="text" />
+     </mat-form-field>
+     <mat-form-field class="col-sm-4" appearance="outline">
+       <mat-label for="NomeProd">Valor Venda</mat-label>
+       <input matInput formControlName="valor_Venda" type="text" />
+     </mat-form-field>
+   </div>
+   <div class="form-row">
+
+     <mat-form-field class="col-sm-4" appearance="outline">
+       <mat-label for="NomeProd">Descrição</mat-label>
+       <input matInput formControlName="desc_Produto" type="text" />
+     </mat-form-field>
+    
+     <div class=" col-sm-4">
+        <div>Quantidade</div>
+        <div class="qtd">
+            <div>
+                <span [ngClass]="{'disabled': qtd == 0,'enabled': qtd >= 1}" style="cursor: pointer;" class="material-icons pointer "(click)="reduce()" >
+                  remove_circle_outline
+                  </span>
+                </div>
+            <div>{{qtd}}</div>
+            <div> 
+                <span style="cursor: pointer;" class="material-icons pointer" (click)="raise()">x
+                    add_circle_outline
+                    </span>
+                </div>
+        </div>
+     </div>
+
+
+   </div>
+   <!-- <input [disabled]="formNew.invalid" class="btn btn-success btn-sm btn-block" type="submit" /> -->
+   <div class="button">
+     <!-- <button matTooltip="Atualizar Produto" matTooltipPosition="above" [disabled]="formNew.invalid" color="warn" type="submit" mat-mini-fab aria-label="Example icon-button with a heart icon">
+       <mat-icon>
+        <span class="material-icons">
+            refresh
+         </span>
+       </mat-icon>
+     </button> -->
+   </div>
+   <div class="flex">
+       <div style="display: flex; justify-content: space-between;">
+           <button mat-button color="primary" (click)="close('a')" >Remover</button>
+           <button mat-raised-button color="warn" (click)="updateProduct()" >update</button>
+       </div>
+   </div>
+ </div>
+</form>
 
 

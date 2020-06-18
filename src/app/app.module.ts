@@ -22,6 +22,7 @@ import { InventoryDialogComponent } from './ordens/dialogs/inventory-dialog/inve
 import { PrintComponent } from './print/print.component';
 import { EditUserModalComponent } from './user/edit-user-modal/edit-user-modal.component';
 import { EmmitUserService } from './user/edit-user-modal/service/emmitUser.service';
+import { emmitProductService } from './produtos/services/emmitProduct.service';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,7 @@ import { EmmitUserService } from './user/edit-user-modal/service/emmitUser.servi
 
   ],
   entryComponents: [MenuDialogComponent, DeleteProdModalComponent, InventoryDialogComponent, EditUserModalComponent],
-  providers: [CookieService, NavbarComponent, EmmitUserService],
+  providers: [CookieService, NavbarComponent, EmmitUserService, emmitProductService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

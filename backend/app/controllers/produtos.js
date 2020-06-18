@@ -48,3 +48,14 @@ module.exports.addProdutos = (application, req, res) => {
 		return res.send(results);
 	});
 };
+module.exports.updateProduto = (application, req, res) => {
+	let produto = req.body;
+	console.log(produto);
+	var connection = application.config.dbConnection;
+	var login_groupDAO = new application.app.models.produtos(connection);
+
+	login_groupDAO.updateProduto(produto, (error, results) => {
+		if (error) throw error;
+		return res.send(results);
+	});
+};

@@ -6,6 +6,7 @@ import { RouteGuardService } from "../shared/route-guard.service";
 import { Router, ActivatedRoute } from "@angular/router";
 import { MatDialog, MatDialogConfig, MatSnackBar } from '@angular/material';
 import { DeleteProdModalComponent } from './dialogs/delete-prod-modal/delete-prod-modal.component';
+import { emmitProductService } from './services/emmitProduct.service';
 
 // import { ReactiveFormsModule } from '@angular/forms';
 
@@ -26,7 +27,8 @@ export class ProdutosComponent implements OnInit {
     private router: Router,
     private activatedRoute: ActivatedRoute,
     private MatDialog: MatDialog,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private emmitProduct: emmitProductService
   ) { }
 
   ngOnInit() {
@@ -106,13 +108,16 @@ export class ProdutosComponent implements OnInit {
     );
   }
   deleteRow(produto) {
+    let id = produto['id_estoque']
     const DialogConfig = new MatDialogConfig();
     DialogConfig.data = {
       name: produto
     }
+    this.emmitProduct.setProduct(produto)
+
     var openDialog = this.MatDialog.open(DeleteProdModalComponent, DialogConfig).afterClosed().subscribe(value => {
       if (value == 'a') {
-        this.orderServices.removeProduto(produto).subscribe(
+        this.orderServices.removeProduto(id).subscribe(
           (err) => { console.log(err) },
           (data) => { },
           () => {
@@ -125,6 +130,8 @@ export class ProdutosComponent implements OnInit {
           }
         )
       }
+      this.getProdutos()
+
     })
     console.log(produto)
   }

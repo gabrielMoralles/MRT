@@ -14,4 +14,7 @@ module.exports = (application) => {
 	application.get('/produtos', (req, res) => {
 		application.app.controllers.produtos.getProdutos(application, req, res);
 	});
+	application.post('/update-produtos-total', (req, res) => {
+		application.app.controllers.produtos.updateProduto(application, req, res);
+	});
 };

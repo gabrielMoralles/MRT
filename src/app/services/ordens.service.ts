@@ -69,4 +69,8 @@ export class OrdensService {
     let url = `${this.loginURL}/update-produto/${idOrder}`
     return this.http.post<any>(url, order)
   }
+  updateProductTotal(produto) {
+    let url = `${this.loginURL}/update-produtos-total`
+    return this.http.post<any>(url, produto)
+  }
 }

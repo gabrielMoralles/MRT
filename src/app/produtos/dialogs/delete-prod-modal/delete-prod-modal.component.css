@@ -3,3 +3,22 @@
 	flex-direction: row;
 	justify-content: flex-end;
 }
+.qtd {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	justify-items: center;
+	margin-top: 15px;
+}
+.disabled {
+	color: grey;
+}
+.enabled {
+	color: red;
+}
+.space-btw {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	cursor: pointer;
+}

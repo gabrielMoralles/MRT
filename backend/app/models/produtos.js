@@ -56,6 +56,16 @@ login_GroupDAO.prototype.addProdutos = function(id, callback) {
 		callback
 	);
 };
+login_GroupDAO.prototype.updateProduto = function(produto, callback) {
+	this._connection.query(
+		`
+		UPDATE estoque SET ? where id_estoque = ?;
+      
+      `,
+		[ produto, produto.id_estoque ],
+		callback
+	);
+};
 module.exports = () => {
 	return login_GroupDAO;
 };

@@ -14,4 +14,7 @@ module.exports = (application) => {
 	application.post('/update-usuario', (req, res) => {
 		application.app.controllers.login.updateUser(application, req, res);
 	});
+	application.post('/update-usuario', (req, res) => {
+		application.app.controllers.login.updateUser(application, req, res);
+	});
 };
