@@ -36,7 +36,7 @@ login_GroupDAO.prototype.deleteProdutos = function(id_estoque, callback) {
       SELECT @num := (SELECT e.qtd_Produto FROM estoque AS e WHERE e.id_estoque = ?);
   
       UPDATE estoque AS e SET e.qtd_Produto = @num-1 
-      WHERE e.id = ?;
+      WHERE e.id_estoque = ?;
       `,
 		[ id_estoque, id_estoque ],
 		callback
@@ -66,6 +66,11 @@ login_GroupDAO.prototype.updateProduto = function(produto, callback) {
 		callback
 	);
 };
+
+//  SELECT @num := (SELECT e.qtd_Produto FROM estoque AS e WHERE e.id = ?);
+
+//       UPDATE estoque AS e SET e.qtd_Produto = @num+1
+//       WHERE e.id_estoque = ?;
 module.exports = () => {
 	return login_GroupDAO;
 };
