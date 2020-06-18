@@ -1,1 +1,1 @@
-export const ambiente: string = 'dev';
+export const ambiente: string = 'prod';
