@@ -18,6 +18,11 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { MaterialModule } from "../assets/modules/material.module";
 import { MenuDialogComponent } from './shared/navbar/dialogs/menu-dialog/menu-dialog.component';
 import { DeleteProdModalComponent } from './produtos/dialogs/delete-prod-modal/delete-prod-modal.component';
+import { InventoryDialogComponent } from './ordens/dialogs/inventory-dialog/inventory-dialog.component';
+import { PrintComponent } from './print/print.component';
+import { EditUserModalComponent } from './user/edit-user-modal/edit-user-modal.component';
+import { EmmitUserService } from './user/edit-user-modal/service/emmitUser.service';
+import { emmitProductService } from './produtos/services/emmitProduct.service';
 
 @NgModule({
   declarations: [
@@ -29,7 +34,10 @@ import { DeleteProdModalComponent } from './produtos/dialogs/delete-prod-modal/d
     OrdemComponent,
     NovaOrdemComponent,
     MenuDialogComponent,
-    DeleteProdModalComponent
+    DeleteProdModalComponent,
+    InventoryDialogComponent,
+    PrintComponent,
+    EditUserModalComponent
   ],
   imports: [
     BrowserModule,
@@ -38,10 +46,11 @@ import { DeleteProdModalComponent } from './produtos/dialogs/delete-prod-modal/d
     LoginModule,
     RouterModule.forRoot(ROUTES),
     BrowserAnimationsModule,
-    MaterialModule
+    MaterialModule,
+
   ],
-  entryComponents: [MenuDialogComponent, DeleteProdModalComponent],
-  providers: [CookieService, NavbarComponent],
+  entryComponents: [MenuDialogComponent, DeleteProdModalComponent, InventoryDialogComponent, EditUserModalComponent],
+  providers: [CookieService, NavbarComponent, EmmitUserService, emmitProductService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

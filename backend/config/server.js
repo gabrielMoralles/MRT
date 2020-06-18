@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 
 const corsOptions = {
-	origin: 'https://gabrielmoralles.github.io/MRT/',
+	origin: '*',
 	optionsSuccessStatus: 200
 };
 

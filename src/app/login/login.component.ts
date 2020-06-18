@@ -10,6 +10,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { RouteGuardService } from '../shared/route-guard.service';
 import { MatDialog } from '@angular/material';
 import { LoginDialogComponent } from './dialogs/login-dialog/login-dialog.component';
+import { ForgotPasswordDialogComponent } from './forgot-password-dialog/forgot-password-dialog.component';
 
 @Component({
   selector: 'app-login',
@@ -70,12 +71,12 @@ export class LoginComponent implements OnInit {
 
             }
             this.router.navigate(['home'])
-
+            return true
 
           } else {
             // alert('Usuário ou senha inválidos')
             this.dialogService.open(LoginDialogComponent, {
-              width: '350px'
+              width: '340px',
             })
           }
 
@@ -84,6 +85,12 @@ export class LoginComponent implements OnInit {
       }
     )
 
+
+  }
+  public openForgotPassword(): void {
+    this.dialogService.open(ForgotPasswordDialogComponent, {
+      width: '600px',
+    })
 
   }
 

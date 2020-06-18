@@ -11,4 +11,16 @@ module.exports = (application) => {
 	application.delete('/cadastro-ordens/:id', (req, res) => {
 		application.app.controllers.ordens.deleteOrdens(application, req, res);
 	});
+	application.post('/cadastro-produto', (req, res) => {
+		application.app.controllers.ordens.cadastroProdOrdens(application, req, res);
+	});
+	application.get('/get-prod-order/:id', (req, res) => {
+		application.app.controllers.ordens.getProdByOrdens(application, req, res);
+	});
+	application.delete(`/delete-produto/:id/:idProd`, (req, res) => {
+		application.app.controllers.ordens.deleteProd(application, req, res);
+	});
+	application.post(`/update-produto/:id`, (req, res) => {
+		application.app.controllers.ordens.updateProd(application, req, res);
+	});
 };

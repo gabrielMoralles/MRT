@@ -1,0 +1,8 @@
+.space-btw {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+.icon-close {
+	cursor: pointer;
+}

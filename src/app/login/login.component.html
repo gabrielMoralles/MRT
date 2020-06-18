@@ -6,12 +6,12 @@
         Login
       </div>
       <mat-form-field class="col-sm-12" appearance="outline">
-        <mat-label>Username</mat-label>
+        <mat-label>Usuário</mat-label>
         <input autocomplete="off" matInput formControlName="username">
       </mat-form-field>
 
       <mat-form-field class="col-sm-12" appearance="outline">
-        <mat-label>Password</mat-label>
+        <mat-label>Senha</mat-label>
         <input autocomplete="off" type="password" matInput formControlName="password">
       </mat-form-field>
 
@@ -31,7 +31,7 @@
       <div class="col-sm-12 ">
         <div class="forgot flex centered">
 
-          <a href="">Esqueci a minha Senha</a>
+          <a  (click)="openForgotPassword()">Esqueci a minha senha</a>
         </div>
       </div>
     </form>

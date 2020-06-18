@@ -5,33 +5,38 @@ import { ProdutosComponent } from './produtos/produtos.component';
 import { UserComponent } from './user/user.component';
 import { OrdemComponent } from './ordem/ordem.component';
 import { NovaOrdemComponent } from './nova-ordem/nova-ordem.component';
+import { PrintComponent } from './print/print.component';
 
-export const ROUTES: Routes=[
+export const ROUTES: Routes = [
 
     {
-        path:'',
-        component:LoginComponent
+        path: '',
+        component: LoginComponent
 
     },
     {
-        path:'home',
-        component:OrdensComponent
+        path: 'home',
+        component: OrdensComponent
     },
     {
-        path:'produtos',
-        component:ProdutosComponent
+        path: 'produtos',
+        component: ProdutosComponent
     },
     {
-        path:'users',
-        component:UserComponent
+        path: 'users',
+        component: UserComponent
     },
     {
-        path:'ordem/:id',
-        component:OrdemComponent
+        path: 'ordem/:id',
+        component: OrdemComponent
     },
     {
-        path:'nova-ordem',
-        component:NovaOrdemComponent
+        path: 'nova-ordem',
+        component: NovaOrdemComponent
+    },
+    {
+        path: 'print/:id',
+        component: PrintComponent
     }
 
 ]

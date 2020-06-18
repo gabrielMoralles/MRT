@@ -4,8 +4,9 @@ import { OrdensService } from "../services/ordens.service";
 import { produto } from "./models/produto_model";
 import { RouteGuardService } from "../shared/route-guard.service";
 import { Router, ActivatedRoute } from "@angular/router";
-import { MatDialog, MatDialogConfig } from '@angular/material';
+import { MatDialog, MatDialogConfig, MatSnackBar } from '@angular/material';
 import { DeleteProdModalComponent } from './dialogs/delete-prod-modal/delete-prod-modal.component';
+import { emmitProductService } from './services/emmitProduct.service';
 
 // import { ReactiveFormsModule } from '@angular/forms';
 
@@ -25,7 +26,9 @@ export class ProdutosComponent implements OnInit {
     private routeGuard: RouteGuardService,
     private router: Router,
     private activatedRoute: ActivatedRoute,
-    private MatDialog: MatDialog
+    private MatDialog: MatDialog,
+    private snackBar: MatSnackBar,
+    private emmitProduct: emmitProductService
   ) { }
 
   ngOnInit() {
@@ -40,11 +43,11 @@ export class ProdutosComponent implements OnInit {
     // }
     this.formNew = this.formBuilder.group({
       nome_Produto: [null, [Validators.required]],
-      valor_Custo: [null, [Validators.min(1)]],
-      valor_Venda: [null, [Validators.min(1)]],
-      qtd_Produto: [null, Validators.min(1)],
-      descricao_Produto: [null, Validators.max(255)],
-      id_FornecedorProduto: [null]
+      valor_Custo: [null, [Validators.min(1), Validators.required]],
+      valor_Venda: [null, [Validators.min(1), Validators.required]],
+      qtd_Produto: [null, [Validators.min(1), Validators.required]],
+      desc_Produto: [null, [Validators.max(255), Validators.required]],
+      fl_ativo: [0],
     });
     this.getProdutos();
   }
@@ -67,7 +70,8 @@ export class ProdutosComponent implements OnInit {
   getProdutos() {
     this.orderServices.getProduto().subscribe(
       data => {
-        this.produtos = data;
+        this.produtos = data.filter(data => data.fl_ativo > 0)
+        console.log(this.produtos)
       },
       err => {
         console.log(err);
@@ -79,7 +83,9 @@ export class ProdutosComponent implements OnInit {
     console.log(id);
     if (qtd > 0) {
       this.orderServices.deleteProduto(id).subscribe(
-        data => { },
+        data => {
+          this.getProdutos();
+        },
         err => {
           console.log(err);
         },
@@ -102,20 +108,30 @@ export class ProdutosComponent implements OnInit {
     );
   }
   deleteRow(produto) {
+    let id = produto['id_estoque']
     const DialogConfig = new MatDialogConfig();
     DialogConfig.data = {
       name: produto
     }
+    this.emmitProduct.setProduct(produto)
+
     var openDialog = this.MatDialog.open(DeleteProdModalComponent, DialogConfig).afterClosed().subscribe(value => {
       if (value == 'a') {
-        this.orderServices.removeProduto(produto).subscribe(
+        this.orderServices.removeProduto(id).subscribe(
           (err) => { console.log(err) },
           (data) => { },
           () => {
-            this.orderServices.getProduto().subscribe(value => this.produtos = value)
+            this.orderServices.getProduto().subscribe(value => {
+              this.snackBar.open('Produto removido com sucesso.', '', {
+                duration: 2000,
+              })
+              this.getProdutos()
+            })
           }
         )
       }
+      this.getProdutos()
+
     })
     console.log(produto)
   }

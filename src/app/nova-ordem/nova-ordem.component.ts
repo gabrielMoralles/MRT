@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { OrdensService } from '../services/ordens.service';
 import { produto } from '../produtos/models/produto_model';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-nova-ordem',
@@ -26,7 +27,8 @@ export class NovaOrdemComponent implements OnInit {
     private orderServices: OrdensService,
     private activatedRoute: ActivatedRoute,
     private ordensService: OrdensService,
-    private router: Router
+    private router: Router,
+    private snackBar: MatSnackBar
 
   ) { }
 
@@ -35,11 +37,12 @@ export class NovaOrdemComponent implements OnInit {
 
     // this.IdOrdem = parseInt(this.activatedRoute.snapshot.url[1].path)
     this.formNew = this.formBuilder.group({
-      cliente: [null, [Validators.required]],
-      data_pag: [null, Validators.required],
+      nome_Cliente: [null, [Validators.required]],
+      // data_Inicio: [new Date(), Validators.required],
       valor: [null, Validators.min(1)],
-      form_pag: [null, Validators.required],
-      desc: [null]
+      forma_pgto: [null, Validators.required],
+      desc: [null],
+      status: ['Novo']
     })
   }
 
@@ -52,7 +55,9 @@ export class NovaOrdemComponent implements OnInit {
       (err) => { },
       (data) => { },
       () => {
-
+        this.snackBar.open('Ordem adicionada com sucesso.', '', {
+          duration: 2000,
+        })
         this.router.navigate(['home'])
       }
     )
