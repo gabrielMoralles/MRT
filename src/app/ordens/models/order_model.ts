@@ -18,7 +18,7 @@ export interface Order {
     valor: number;
     desc: string;
     forma_pgto: string
-    status: number;
+    status: string;
     data: Date;
     data_pag: Date;
     fl_ativo: number
