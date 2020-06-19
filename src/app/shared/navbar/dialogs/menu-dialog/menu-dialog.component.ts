@@ -27,4 +27,7 @@ export class MenuDialogComponent implements OnInit {
   goToGrafana() {
     window.open("http://ec2-18-230-148-207.sa-east-1.compute.amazonaws.com:3000/?orgId=1")
   }
+  openManual() {
+    window.open('https://docs.google.com/document/d/e/2PACX-1vR4i-gvP-sBtx2jRUzpsdo_TrqxesZVvn5n-q1HsGpNE0CdE70_i5lbsFbl2dNl7C4IYqu98c_3TdzH/pub')
+  }
 }
