@@ -17,10 +17,14 @@ export class MenuDialogComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+
   }
   logout() {
     this.cookieService.deleteAll()
     this.router.navigate(['/'])
     this.dialogService.closeAll()
+  }
+  goToGrafana() {
+    window.open("http://ec2-18-230-148-207.sa-east-1.compute.amazonaws.com:3000/?orgId=1")
   }
 }
